@@ -7,7 +7,7 @@ interactive script player system, focused on usability, easy user
 interaction, along with the flexibility of making the media player 
 personalised for each individual user.
 
-Creating each control element (play, loop etc), and allowing the user to 
+Creating each control element (play, loop etc.), and allowing the user to 
 customise their own control bar with the functions most relevant to them.
 Configuring a file’s subtitle into an interactive text.
 Greater focus on product/MVP frontend 

@@ -1,4 +1,4 @@
 function ClickState(media) {
 	State.call(media);
-	this.click = function(time) {media.setTime(time);};
+	this.click = function(obj) {media.setTime(getTime(obj));};
 }

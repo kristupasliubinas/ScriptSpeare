@@ -6,6 +6,7 @@
     <title></title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="javascript/clickstate.js"></script>
+	<script src="javascript/selectstate.js"></script>
 	<script src="javascript/abstractstate.js"></script>
 	<script src="javascript/mediaplayer.js"></script>
 	<script src="javascript/main.js"></script>
@@ -17,6 +18,9 @@
 </video>
 
 <button onclick="media.togglePause()">Play/Pause</button>
+<button onclick="media.toggleLoop()">Loop/Stop Loop</button>
+<button onclick="setState('click')">Click</button>
+<button onclick="setState('select')">Select</button>
 
 <div>
 <a href="#t=00:00:00,000"> RE-ENTER SEYTON. </a><br>

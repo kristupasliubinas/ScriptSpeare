@@ -1,14 +1,13 @@
 // Initialize the important structures
 $(document).ready(function(){
 	media = new Media($("#media"));
+	clickState = new ClickState(media);
+	state = clickState;
 });
 
 $(document).ready(function(){
 	$("a").click(function(){
-        console.log(getTime($(this)));
-		console.log(getNextTime($(this)));
-		/*
-		media.setTime(getTime($(this)));*/
+		state.click(getTime($(this)));
 	});
 })
 

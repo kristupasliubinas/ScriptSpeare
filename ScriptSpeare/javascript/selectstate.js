@@ -10,4 +10,10 @@ function selectState(media) {
 			this.isStartClick = true;
 		}
 	};
+	media.addTimeUpdate(function(event){
+		media = event.data
+		if (media.looping) {
+			if (media.getTime() > media.loopEnd || media.getTime() < media.loopStart) media.setTime(media.loopStart);
+		}
+    });
 }

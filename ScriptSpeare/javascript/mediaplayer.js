@@ -1,5 +1,6 @@
 function Media(jQueryMedia) {
 	this.htmlMedia = jQueryMedia[0];
+	this.jQueryMedia = jQueryMedia;
 	this.setTime = function(time) {this.htmlMedia.currentTime = time;};
 	this.getTime = function() {return this.htmlMedia.currentTime;};
 	this.getDuration = function() {return this.htmlMedia.duration;};
@@ -22,20 +23,11 @@ function Media(jQueryMedia) {
 			this.loopStart = this.loopEnd;
 			this.loopEnd = time;
 		} else {
-			this.loopEnd = time;
+			this.loopEnd = time; 
 		}
 		console.log(this.loopStart + " " + this.loopEnd);
 	};
-
-	this.timeUpdates = [];
-	this.addTimeUpdate = function(timeUpdate) {this.timeUpdates.push(timeUpdate);};
-	jQueryMedia.on("timeupdate", null, this, function(event){
-		media = event.data
-		if (media.looping) {
-			if (media.getTime() > media.loopEnd || media.getTime() < media.loopStart) media.setTime(media.loopStart);
-		}
-		for (i = 0; i < media.timeUpdates.length; i++) {
-			media.timeUpdates[i]();
-		}
-    });
+	this.addTimeUpdate = function(timeUpdate) {
+		this.jQueryMedia.on("timeupdate", null, this, timeUpdate);
+	};
 }

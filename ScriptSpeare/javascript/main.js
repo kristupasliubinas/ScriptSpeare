@@ -18,6 +18,5 @@ function setState(stateString) {
 	} else if (stateString == "click") {
 		state = clickState;
 	}
-	console.log(state);
 } 
 

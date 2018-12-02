@@ -16,10 +16,22 @@
 #video-side{
 	position:inherit;
 }
+#int-selection{
+	
+	position: center;
+	margin: 20px;
+	width:95%;
+
+}
 #media{
-	width: 400px;
-	height: 250px;
+	margin: 2.5%;
+	width: 95%;
+	max-height: 50%;
+	background: grey;
 	 
+}
+#buttons{
+	
 }
 #text-side{
 	position: inherit;

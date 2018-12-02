@@ -7,11 +7,13 @@
 		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/style.css">
  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		<script src="javascript/clickstate.js"></script>
-		<script src="javascript/selectstate.js"></script>
-		<script src="javascript/abstractstate.js"></script>
-		<script src="javascript/mediaplayer.js"></script>
-		<script src="javascript/main.js"></script>
+ 		<script src="js/popper.min.js"></script>
+ 		<script src="js/bootstrap.min.js"></script>
+		<script src="js/clickstate.js"></script>
+		<script src="js/selectstate.js"></script>
+		<script src="js/abstractstate.js"></script>
+		<script src="js/mediaplayer.js"></script>
+		<script src="js/main.js"></script>
 	</head>
 	<body>
 		<div class="row" >
@@ -21,6 +23,17 @@
 		</div>
 		<div class="row">
 		<div class="container col-sm-6" id="video-side">
+			<div class="dropdown" >
+				<button id="int-selection" class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				    Current Interpratation
+				 </button>
+				 <div class="dropdown-menu">
+				 
+				    <a class="dropdown-item" href="#">Action</a>
+				    <a class="dropdown-item" href="#">Another action</a>
+				    <a class="dropdown-item" href="#">Something else here</a>
+				 </div>
+			</div>
 			<video class="col-sm-12" id="media" controls> 
 			<source type="video/mp4" src="https://content.screencast.com/users/andrew.maguire20/folders/tomorrow/media/c89f6250-daf9-466a-a41f-fa0e4ef0bde5/Ian%20McKellen.mp4">
 			</video>

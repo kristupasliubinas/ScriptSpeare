@@ -1,0 +1,26 @@
+#top{
+	overflow: hidden;
+	background: #000000;
+	text-align: center;
+	
+	
+}
+#logo{
+	font-family: Risque;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 150%;
+	color: #FFFFFF;
+	margin: 0;
+}
+#video-side{
+	position:inherit;
+}
+#media{
+	width: 400px;
+	height: 250px;
+	 
+}
+#text-side{
+	position: inherit;
+}

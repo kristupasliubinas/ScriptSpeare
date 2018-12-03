@@ -24,14 +24,20 @@
 
 }
 #media{
-	margin: 2.5%;
+	position: center;
+	margin: 20px;
 	width: 95%;
 	max-height: 50%;
 	background: grey;
 	 
 }
 #buttons{
-	
+	position: center;
+	margin: 20px;
+}
+#int-info{
+	position: center;
+	margin: 20px;
 }
 #text-side{
 	position: inherit;

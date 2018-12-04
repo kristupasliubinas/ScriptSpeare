@@ -1,3 +1,6 @@
+html { 
+    font-family: 'Cormorant Garamond', serif;
+}
 #header {
 	background-color: black;
 	color: white;
@@ -15,9 +18,6 @@
 }
 #content-left > .container-fluid > .row:last-child {
 	margin-bottom: 30px;
-}
-#content-left img {
-	border: 1px solid black;
 }
 #content-right {
 	border-left: 1px solid silver;
@@ -47,4 +47,28 @@
 select, input {
 	border: 1px solid black !important;
 	border-radius: 0 !important;
+}
+
+
+
+.script{
+	  font-family: 'Cormorant Garamond', serif;
+}
+.stage-dir {
+    color: rgb(100, 100, 100);
+    font-style: italic;
+}
+
+.char {
+    font-weight: bolder;
+}
+
+.script p {
+	padding: 0;
+	margin:0;
+   
+}
+.script a {
+    text-decoration: none;
+    color: black;
 }

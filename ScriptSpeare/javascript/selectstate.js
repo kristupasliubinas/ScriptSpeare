@@ -1,13 +1,17 @@
 function selectState(media) {
 	State.call(media);
 	this.isStartClick = true;
+	this.waitStart = 0;
 	this.click = function(obj) {
 		if (this.isStartClick) {
-			media.setLoopStart(getTime(obj));
+			this.waitStart = getTime(obj);
 			this.isStartClick = false;
+			resetColour();
 		} else {
+			media.setLoopStart(this.waitStart);
 			media.setLoopEnd(getNextTime(obj));
 			this.isStartClick = true;
+			colourTextElements(media.loopStart, media.loopEnd);
 		}
 	};
 	media.addTimeUpdate(function(event){

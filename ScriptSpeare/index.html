@@ -27,7 +27,7 @@
 					<div class="container-fluid">
 						<div class="row">
 							<div class="col-12">
-								<select class="custom-select">
+								<select class="custom-select" >
 									<option>- Choose a video -</option>
 									<option value="1" selected>Macbeth (2015) - Michael Fassbender</option>
 									<option value="2">Two</option>
@@ -35,13 +35,14 @@
 								</select>
 							</div>
 							<div class="col-12">
-								<video class="col-12" id="media"> 
+								<video poster=" media/thumbnail.png" class="col-12" id="media" style="margin-top: 0;"> 
 									<source type="video/mp4" src="https://content.screencast.com/users/andrew.maguire20/folders/tomorrow/media/c89f6250-daf9-466a-a41f-fa0e4ef0bde5/Ian%20McKellen.mp4">
 								</video>
 							</div>
 							<div class="col-9">
 								<h4>Macbeth (2015)</h4>
-								<p>------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+								<p style="margin-bottom: 4em;">Macbeth, the Thane of Glamis, receives a prophecy from a trio of witches that one day he will become King of Scotland. Consumed by 
+									ambition and spurred to action by his wife, Macbeth murders his king and takes the throne for himself.</p>
 							</div>
 						</div>
 					</div>
@@ -49,7 +50,7 @@
 				<div class="col-6" id="content-right">
 					<div class="container-fluid">
 						<div class="row">
-							<div class="col-8 script">
+							<div class="col-9 script">
                					<h1>
                						Macbeth<br>
                						<small class="text-muted">line: 131/465</small>
@@ -75,7 +76,7 @@
 								<a href="#t=00:01:19,160"> Told by an idiot, full of sound and fury, </a><br>
 								<a href="#t=00:01:28,040"> Signifying nothing.</a></p>	
 							</div>
-							<div class="col-4">
+							<div class="col-3">
 								<form class="form">
 									<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
 								</form>
@@ -85,7 +86,7 @@
 											<button class ="side-buttn" onclick="setState('click')">Go to</button>
 										</div>
 										<div class="col-4">
-											<img src="greycircle.png" class="img-fluid">
+											<img src="media/greycircle.png" class="img-fluid">
 										</div>
 									</div>
 									<div class="row">
@@ -93,7 +94,7 @@
 											<button class="side-buttn" onclick="">Notes</button>
 										</div>
 										<div class="col-4">
-											<img src="greycircle.png" class="img-fluid">
+											<img src="media/greycircle.png" class="img-fluid">
 										</div>
 									</div>
 									<div class="row">
@@ -101,7 +102,7 @@
 											<button class="side-buttn" onclick="setState('select')">Select</button>
 										</div>
 										<div class="col-4">
-											<img src="greycircle.png" class="img-fluid">
+											<img src="media/greycircle.png" class="img-fluid">
 										</div>
 									</div>
 								</div>
@@ -111,7 +112,7 @@
 					
 				</div>
 			</div>
-			<div  class=" row-centered navbar navbar-expand-lg fixed-bottom " style="height:10%; background-color: black;">
+			<div  class=" row-centered navbar navbar-expand-lg fixed-bottom " style="height:4em; background-color: black;">
       				<div class="col-12 align-middle bar-icons col-centered">
       					<i class="fas fa-play-circle bar-button"  style="font-size: 3em;" onclick="media.togglePause()"></i>
       				

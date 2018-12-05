@@ -29,6 +29,9 @@ html {
 #content-right h1 > small {
 	font-size: 1.25rem;
 }
+.side-buttn{
+	border-radius: 0.5em;
+}
 #more {
 	border: 1px solid silver;
 	margin-top: 20px;
@@ -77,6 +80,7 @@ select, input {
 	margin-left: 0.5em;
 	margin-right: 0.5em;
 	color: white;
+	cursor: pointer;
 }
 .col-centered {
     display:inline-block;

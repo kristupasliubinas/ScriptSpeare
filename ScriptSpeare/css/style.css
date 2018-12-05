@@ -72,3 +72,21 @@ select, input {
     text-decoration: none;
     color: black;
 }
+
+.bar-button{
+	margin-left: 0.5em;
+	margin-right: 0.5em;
+	color: white;
+}
+.col-centered {
+    display:inline-block;
+    float:none;
+    /* reset the text-align */
+    text-align:left;
+    /* inline-block space fix */
+    margin-right:-4px;
+    text-align: center;
+}
+.row-centered {
+    text-align:center;
+}

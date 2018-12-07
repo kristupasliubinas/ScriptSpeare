@@ -13,7 +13,3 @@ Configuring a file’s subtitle into an interactive text.
 Greater focus on product/MVP frontend 
 (expanded media controls; loop/trim files etc)
 
-
-Due to the nature if the project and the division of work between teams we 
-are going to be working in a combined repository. Our Code can be found at:
-http://stgit.dcs.gla.ac.uk/SSMAIN/player1

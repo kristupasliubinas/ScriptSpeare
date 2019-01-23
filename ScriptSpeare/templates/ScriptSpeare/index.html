@@ -1,0 +1,18 @@
+{% extends 'Scriptspeare/base.html' %}
+{% load staticfiles %}
+
+{% block body_block %}
+<div>
+{% if categories %}
+	<ul> 
+		{%for category in categories %}
+			<li>
+				<a href="{% url 'show_category' category.slug %}">{{category.name}}</a>
+			</li>
+		{%endfor%}
+	</ul>
+	{% else %}
+		<strong>No categories present!</strong>
+	{% endif %}
+</div>
+{% endblock %}

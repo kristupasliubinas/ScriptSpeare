@@ -2,10 +2,9 @@
 $(document).ready(function(){
 	checkEnd = function(event) {
 		if (event.data.getTime() >= event.data.getDuration()) {
-			$("#playbutton")[0].className = "fas fa-redo bar-button"
+			$("#playbutton")[0].className = "fas fa-arrow-circle-left bar-button";
 		};
 	};
-	console.log(media);
 	media.addTimeUpdate(checkEnd, media);
 });
 
@@ -13,6 +12,10 @@ $(document).ready(function(){
 function togglePauseUI(target, media) {
 	playIcon = "fas fa-play-circle bar-button";
 	pauseIcon = "fas fa-pause-circle bar-button";
+	if (media.getTime() == media.getDuration) {
+		media.setTime(0);
+		target.className = pauseIcon;
+	};
 	media.togglePause();
 	if (media.paused()) {
 		target.className = pauseIcon;

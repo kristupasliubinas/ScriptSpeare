@@ -8,7 +8,7 @@
  			{% if plays %}
  			<ul>
  				{% for play in plays %}
- 					<li><a href="">{{ play.title }}</a></li>
+ 					<li><a href="{% url 'show_play' category.slug play.slug %}">{{ play.title }}</a></li>
  				{% endfor %}
  			</ul>
  			{% else %}

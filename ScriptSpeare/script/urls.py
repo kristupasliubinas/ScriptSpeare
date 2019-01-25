@@ -19,10 +19,13 @@ from django.conf.urls import include
 from ScriptSpeare import views
 from django.conf import settings
 from django.conf.urls.static import static
+from django.urls import path
 
 urlpatterns = [
 	url(r'^$', views.index, name='index'),
 	url(r'^ScriptSpeare/', include('ScriptSpeare.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^category/(?P<category_name_slug>[\w\-]+)/$', views.show_category, name='show_category'),
+    path('<slug:category_name_slug>/<slug:play_slug>/', views.show_play, name='show_play'),
+    url(r'^category/(?P<category_name_slug>)/(?P<play_title_slug>[\w\-]+)/$', views.show_play, name='show_play'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

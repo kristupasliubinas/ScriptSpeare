@@ -32,6 +32,11 @@ class Interpretation(models.Model):
 	play=models.ForeignKey(Play, on_delete=models.CASCADE)
 	lead=models.CharField(max_length=128)
 	year=models.IntegerField(default=0)
+	slug=models.SlugField(unique=True)
+	
+	def save(self, *args, **kwargs):
+		self.slug = slugify(self.lead)
+		super(Interpretation, self).save(*args, **kwargs)
 	
 	def __str__(self):
 		return self.lead

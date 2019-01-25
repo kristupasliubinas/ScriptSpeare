@@ -2,10 +2,16 @@ from django.contrib import admin
 from ScriptSpeare.models import Category,Play,Interpretation
 
 
-admin.site.register(Play)
-admin.site.register(Interpretation)
+
 
 class CategoryAdmin(admin.ModelAdmin):
 	prepopulated_fields = {'slug':('name',)}
+class PlayAdmin(admin.ModelAdmin):
+	prepopulated_fields = {'slug':('title',)}
+class InterpretationAdmin(admin.ModelAdmin):
+	prepopulated_fields = {'slug':('lead',)}
+	
 # Update the registration to include this customised interface
 admin.site.register(Category, CategoryAdmin)
+admin.site.register(Play,PlayAdmin)
+admin.site.register(Interpretation, InterpretationAdmin)

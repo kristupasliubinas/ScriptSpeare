@@ -25,13 +25,13 @@ def show_category(request, category_name_slug):
 		
 	return render(request, 'ScriptSpeare/category.html', context_dict)
 
-def show_play(request, category_name_slug, play_title_slug):
+def show_play(request, category_name_slug, play_slug):
 	context_dict={}
 	
 	try:
-		play=Play.objects.get(slug=play_title_slug)
+		play=Play.objects.get(slug=play_slug)
 		
-		interp=Interpretation.objects.filter(title=play)
+		interp=Interpretation.objects.filter(play=play)
 		context_dict['interp']=interp
 		
 		context_dict['play']=play

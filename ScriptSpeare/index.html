@@ -6,6 +6,7 @@
 		<!-- Bootstrap core CSS -->
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 		<link href="css/style.css" rel="stylesheet">
+		<link href="css/dropup.css" rel="stylesheet">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="javascript/clickstate.js"></script>
@@ -114,6 +115,16 @@
 			</div>
 			<div  class=" row-centered navbar navbar-expand-lg fixed-bottom " style="height:4em; background-color: black;">
       				<div class="col-12 align-middle bar-icons col-centered">
+						<div class="dropup">
+							<button class="dropbtn">Playback</button>
+							<div class="dropup-content">
+								<a href="#" onclick="media.setPlaybackRate(0.5)">0.5</a>
+								<a href="#" onclick="media.setPlaybackRate(0.75)">0.75</a>
+								<a href="#" onclick="media.setPlaybackRate(1)">Normal</a>
+								<a href="#" onclick="media.setPlaybackRate(1.5)">1.5</a>
+								<a href="#" onclick="media.setPlaybackRate(2)">2.0</a>
+							</div>
+						</div>
       					<i class="fas fa-play-circle bar-button"  style="font-size: 3em;" onclick="media.togglePause()"></i>
       				
       					<i class="fas fa-redo bar-button" onclick="media.toggleLoop()"></i>

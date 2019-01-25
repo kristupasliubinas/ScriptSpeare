@@ -12,7 +12,7 @@ function getTime(event) {
 
 function getNextTime(event) {
 	timeStamp = event.next().next("a").attr("href");
-	if (timeStamp) return parseTime(timeStamp.substring(3));
+	if (timeStamp) return parseTime(timeStamp.substring(3))
 	else return media.getDuration();
 }
 

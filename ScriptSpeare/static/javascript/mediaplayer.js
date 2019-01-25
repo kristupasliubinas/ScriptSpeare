@@ -11,8 +11,9 @@ function Media(jQueryMedia) {
 		else this.pause();
 	};
 	this.paused = function() {return this.htmlMedia.paused;};
-	this.setPlaybackRate = function(rate) {this.htmlMedia.playbackRate = rate};
 
+
+	this.setPlaybackRate = function(rate) {this.htmlMedia.playbackRate = rate};
 	this.loopStart = 0;
 	this.loopEnd = this.htmlMedia.duration;
 	this.looping = false;

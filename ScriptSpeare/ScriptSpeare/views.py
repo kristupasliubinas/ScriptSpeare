@@ -44,4 +44,24 @@ def show_play(request, category_name_slug, play_slug):
 		
 		
 	return render(request, 'ScriptSpeare/play.html', context_dict)
+	
+def show_interpretation(request, category_name_slug, play_slug, interpretation_lead_slug ):
+	context_dict={}
+	
+	try:
+		play=Play.objects.get(slug=play_slug)
+		
+		interp=Interpretation.objects.filter(play=play)
+		context_dict['interp']=interp
+		
+		context_dict['play']=play
+		context_dict['category']=Category.objects.get(slug=category_name_slug)
+		
+	except Play.DoesNotExist:
+		context_dict['intrep'] = None
+		context_dict['play'] = None
+		context_dict['category']=None
+		
+		
+	return render(request, 'ScriptSpeare/interpretation.html', context_dict)
 		

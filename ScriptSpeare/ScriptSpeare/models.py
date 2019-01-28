@@ -28,6 +28,7 @@ class Play(models.Model):
 		return self.title
 
 class Interpretation(models.Model):
+	id=models.AutoField(primary_key=True)
 	category=models.ForeignKey(Category, on_delete=models.CASCADE)
 	play=models.ForeignKey(Play, on_delete=models.CASCADE)
 	lead=models.CharField(max_length=128)

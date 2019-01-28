@@ -7,22 +7,31 @@
 					<div class="container-fluid">
 						<div class="row">
 							<div class="col-12">
-								<select class="custom-select" >
-									<option>- Choose a video -</option>
-									<option value="1" selected>Macbeth (2015) - Michael Fassbender</option>
-									<option value="2">Two</option>
-									<option value="3">Three</option>
+								<h1>
+               						{{play.title}}<br>
+               					</h1>
+								<select class="custom-select" onchange="location = this.value;" >
+									{% if all_interp %}
+							 				<ul>
+							 					<option value="">Now viewing: {{ interp.lead }}, {{interp.year}}</option>
+							 					<option value ="" >----------------------</option>
+							 				{% for itps in all_interp %}
+							 					<option value="{% url 'show_interpretation' category.slug play.slug itps.slug itps.id %}">{{ itps.lead }}, {{itps.year}}</option>
+							 				{% endfor %}
+							 				</ul>
+							 			{% else %}
+							 				<strong>No plays currently in category.</strong>
+										{% endif %}
 								</select>
 							</div>
 							<div class="col-12">
-								<video poster="/media/thumbnail.png" class="col-12" id="media" style="margin-top: 0;"> 
-									<source type="video/mp4" src="https://content.screencast.com/users/andrew.maguire20/folders/tomorrow/media/c89f6250-daf9-466a-a41f-fa0e4ef0bde5/Ian%20McKellen.mp4">
+								<video poster="" class="col-12" id="media" style="margin-top: 0;"> 
+									<source type="video/mp4" src="/media/{{play.slug}}/{{interp.id}}.mp4">
 								</video>
 							</div>
 							<div class="col-9">
-								<h4>Macbeth (2015)</h4>
-								<p style="margin-bottom: 4em;">Macbeth, the Thane of Glamis, receives a prophecy from a trio of witches that one day he will become King of Scotland. Consumed by 
-									ambition and spurred to action by his wife, Macbeth murders his king and takes the throne for himself.</p>
+								<h4>{{play.title}}</h4>
+								<p style="margin-bottom: 4em;">{{ interp.lead }},{{interp.year }} </p>
 							</div>
 						</div>
 					</div>
@@ -31,11 +40,7 @@
 					<div class="container-fluid">
 						<div class="row">
 							<div class="col-9 script">
-               					<h1>
-               						Macbeth<br>
-               						<small class="text-muted">line: 131/465</small>
                					
-               					</h1>
 								
            						<p class="stage-dir"><a href="#t=00:00:00,000"> RE-ENTER SEYTON. </a></p>
 								<p class="char">MACBETH</p>
@@ -86,6 +91,7 @@
 										</div>
 									</div>
 								</div>
+								<small class="text-muted">line: 131/465</small>
 							</div>
 						</div>
 					</div>

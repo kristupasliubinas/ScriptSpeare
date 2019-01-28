@@ -27,6 +27,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^category/(?P<category_name_slug>[\w\-]+)/$', views.show_category, name='show_category'),
     path('<slug:category_name_slug>/<slug:play_slug>/', views.show_play, name='show_play'),
-    path('<slug:category_name_slug>/<slug:play_slug>/<slug:interpretation_lead_slug>', views.show_interpretation, name='show_interpretation'),
+    path('<slug:category_name_slug>/<slug:play_slug>/<slug:interpretation_lead_slug>/<slug:interp_id>', views.show_interpretation, name='show_interpretation'),
     
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -19,4 +19,3 @@ function setState(stateString) {
 		state = clickState;
 	}
 } 
-

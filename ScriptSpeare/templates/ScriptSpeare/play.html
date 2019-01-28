@@ -8,7 +8,7 @@
  			{% if interp %}
  			<ul>
  				{% for itps in interp %}
- 					<li><a href="{% url 'show_interpretation' category.slug play.slug itps.slug %}">{{ itps.lead }}</a></li>
+ 					<li><a href="{% url 'show_interpretation' category.slug play.slug itps.slug itps.id %}">{{ itps.lead }}</a></li>
  				{% endfor %}
  			</ul>
  			{% else %}

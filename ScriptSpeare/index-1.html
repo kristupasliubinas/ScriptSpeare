@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Scriptspeare</title>
+		<!-- Bootstrap core CSS -->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/style.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="javascript/clickstate.js"></script>
+		<script src="javascript/selectstate.js"></script>
+		<script src="javascript/abstractstate.js"></script>
+		<script src="javascript/mediaplayer.js"></script>
+		<script src="javascript/main.js"></script>
+	</head>
+	
+	<body>
+		<div class="container-fluid">
+			<div class="row" id="header">
+				<div class="col-12 text-center">
+					<h4>Scriptspeare</h4>
+				</div>
+			</div>
+			<div class="row" id="content">
+				<div class="col-6" id="content-left">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-12">
+								<select class="custom-select" >
+									<option>- Choose a video -</option>
+									<option value="1" selected>Macbeth (2015) - Michael Fassbender</option>
+									<option value="2">Two</option>
+									<option value="3">Three</option>
+								</select>
+							</div>
+							<div class="col-12">
+								<video poster=" media/thumbnail.png" class="col-12" id="media" style="margin-top: 0;"> 
+									<source type="video/mp4" src="https://content.screencast.com/users/andrew.maguire20/folders/tomorrow/media/c89f6250-daf9-466a-a41f-fa0e4ef0bde5/Ian%20McKellen.mp4">
+								</video>
+							</div>
+							<div class="col-9">
+								<h4>Macbeth (2015)</h4>
+								<p style="margin-bottom: 4em;">Macbeth, the Thane of Glamis, receives a prophecy from a trio of witches that one day he will become King of Scotland. Consumed by 
+									ambition and spurred to action by his wife, Macbeth murders his king and takes the throne for himself.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-6" id="content-right">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-9 script">
+               					<h1>
+               						Macbeth<br>
+               						<small class="text-muted">line: 131/465</small>
+               					
+               					</h1>
+								
+           						<p class="stage-dir"><a href="#t=00:00:00,000"> RE-ENTER SEYTON. </a></p>
+								<p class="char">MACBETH</p>
+								<p><a href="#t=00:00:02,060"> Wherefore was that cry? </a></p>
+								<p class="char">SAYTON</p>
+								<p><a href="#t=00:00:03,180"> The Queen, my lord, is dead. </a></p>
+								<p class="char">MACBETH</p>
+								<p><a href="#t=00:00:13,120">She should have died hereafter; </a><br>
+								<a href="#t=00:00:18,680"> There would have been a time for such a word. </a><br>
+								<a href="#t=00:00:22,300"> Tomorrow, and tomorrow, and tomorrow </a><br>
+								<a href="#t=00:00:34,740"> Creeps in this petty pace from day to day </a><br>
+								<a href="#t=00:00:40,120"> To the last syllable of recorded time; </a><br>
+								<a href="#t=00:00:45,820"> And all our yesterdays have lighted fools </a><br>
+								<a href="#t=00:00:50,320"> The way to dusty death. Out, out, brief candle! </a><br>
+								<a href="#t=00:01:00,900"> Life's but a walking shadow, a poor player </a><br>
+								<a href="#t=00:01:08,300"> That struts and frets his hour upon the stage </a><br>
+								<a href="#t=00:01:13,020"> And then is heard no more. It is a tale </a><br>
+								<a href="#t=00:01:19,160"> Told by an idiot, full of sound and fury, </a><br>
+								<a href="#t=00:01:28,040"> Signifying nothing.</a></p>	
+							</div>
+							<div class="col-3">
+								<form class="form">
+									<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+								</form>
+								<div class="container-fluid" id="more">
+									<div class="row">
+										<div class="col-8">
+											<button class ="side-buttn" onclick="setState('click')">Go to</button>
+										</div>
+										<div class="col-4">
+											<img src="media/greycircle.png" class="img-fluid">
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-8">
+											<button class="side-buttn" onclick="">Notes</button>
+										</div>
+										<div class="col-4">
+											<img src="media/greycircle.png" class="img-fluid">
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-8">
+											<button class="side-buttn" onclick="setState('select')">Select</button>
+										</div>
+										<div class="col-4">
+											<img src="media/greycircle.png" class="img-fluid">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+			<div  class=" row-centered navbar navbar-expand-lg fixed-bottom " style="height:4em; background-color: black;">
+      				<div class="col-12 align-middle bar-icons col-centered">
+      					<i class="fas fa-play-circle bar-button"  style="font-size: 3em;" onclick="media.togglePause()"></i>
+      				
+      					<i class="fas fa-redo bar-button" onclick="media.toggleLoop()"></i>
+      				</div>
+      			
+    		</div>
+
+ 
+		</div>
+	</body>
+</html>

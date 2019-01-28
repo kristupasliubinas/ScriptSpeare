@@ -1,0 +1,20 @@
+{% extends 'Scriptspeare/base.html' %}
+{% load staticfiles %}
+
+{% block body_block %}
+ 		<div>
+ 			{% if play %}
+ 				<h1>{{ play.title }}</h1>
+ 			{% if interp %}
+ 			<ul>
+ 				{% for itps in interp %}
+ 					<li><a href="{% url 'show_interpretation' category.slug play.slug itps.slug itps.id %}">{{ itps.lead }}</a></li>
+ 				{% endfor %}
+ 			</ul>
+ 			{% else %}
+ 				<strong>No plays currently in category.</strong>
+			{% endif %}
+ 			{% else %}
+ 				The specified category does not exist!
+ 			{% endif %}
+{% endblock %}

@@ -28,6 +28,8 @@
 								<video poster="" class="col-12" id="media" style="margin-top: 0;"> 
 									<source type="video/mp4" src="/media/{{play.slug}}/{{interp.id}}.mp4">
 								</video>
+								<div id="overlay" class="overlay_left"><a href="{% url 'show_interpretation' category.slug play.slug prev.slug prev.id %}"> < </a></div>
+								<div id="overlay" class="overlay_right"><a href="{% url 'show_interpretation' category.slug play.slug next.slug next.id %}"> > </a></div>
 							</div>
 							<div class="col-9">
 								<h4>{{play.title}}</h4>

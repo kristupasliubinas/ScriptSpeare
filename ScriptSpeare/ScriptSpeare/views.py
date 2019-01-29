@@ -53,8 +53,20 @@ def show_interpretation(request, category_name_slug, play_slug, interpretation_l
 		
 		all_interp=Interpretation.objects.filter(play=play)
 		interp=Interpretation.objects.get(id=interp_id)
+		if int(interp_id)==1:
+			prev=Interpretation.objects.get(id=interp_id)
+		else:
+			prev=Interpretation.objects.get(id=int(interp_id)-1)
+		
+		if int(interp_id)==3:
+			next=Interpretation.objects.get(id=interp_id)
+		else:
+			next=Interpretation.objects.get(id=int(interp_id)+1)	
+		
 		
 		context_dict['all_interp']=all_interp
+		context_dict['prev']=prev
+		context_dict['next']=next
 		context_dict['interp']=interp
 		context_dict['play']=play
 		context_dict['category']=Category.objects.get(slug=category_name_slug)

@@ -97,23 +97,14 @@ select, input {
 .row-centered {
     text-align:center;
 }
- .overlay_left {
-  position:absolute ; 
-  top: 0; 
-  color: #FFF; 
-  text-align: center;
-  vertical-align: middle;
-  font-size: 20px;
-  background: rgb(255, 255, 255) transparent;
-  width: 10%;
-  height: 100%;
-  padding: 10px 0;
-  z-index: 2147483647;
-}
- .overlay_right {
-  position:absolute ; 
-  top: 0; 
+
+#overlay_right {
   right: 0;
+}
+
+.overlay {
+  position:absolute ; 
+  top: 0; 
   color: #FFF; 
   text-align: center;
   vertical-align: middle;
@@ -123,6 +114,11 @@ select, input {
   height: 100%;
   padding: 10px 0;
   z-index: 2147483648;
+  opacity: 0.0;
+}
+
+.overlay:hover {
+  opacity: 1.0;
 }
 
 #media {

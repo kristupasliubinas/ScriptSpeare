@@ -2,17 +2,29 @@
 {% load staticfiles %}
 
 {% block body_block %}
-<div>
+
 {% if categories %}
-	<ul> 
-		{%for category in categories %}
-			<li>
-				<a href="{% url 'show_category' category.slug %}">{{category.name}}</a>
-			</li>
-		{%endfor%}
-	</ul>
+		<div class="col cat-menu">
+			<div class="row d-flex align-items-center justify-content-center"><h1>Choose a category:</h1></div>
+			<div class="row d-flex align-items-center justify-content-center" >
+				{%for category in categories %}
+					<a  class="col d-flex justify-content-center" href="{% url 'show_category' category.slug %}">
+						<img id="categories" src="/static/images/{{category}}.jpg"  >
+					</a>
+				
+				{%endfor%}
+			</div>
+			<div class="row d-flex align-items-center justify-content-center" >
+				{%for category in categories %}
+					<a id="categories" class="col d-flex justify-content-center"   href="{% url 'show_category' category.slug %}">
+						{{category.name}}
+					</a>
+				
+				
+				{%endfor%}
+			</div>
+		</div>
 	{% else %}
 		<strong>No categories present!</strong>
 	{% endif %}
-</div>
 {% endblock %}

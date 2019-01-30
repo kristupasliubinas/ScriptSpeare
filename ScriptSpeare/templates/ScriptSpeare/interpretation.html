@@ -112,7 +112,9 @@
 								<a href="#" onclick="media.setPlaybackRate(2)">2.0</a>
 							</div>
 						</div>
+						<button class="dropbtn" onclick="media.setTime(media.getTime() - 10)">-3 lines</button>
       					<i id="playbutton" class="fas fa-play-circle bar-button"  style="font-size: 3em;" onclick="togglePauseUI(this, media)"></i>
+						<button class="dropbtn" onclick="media.setTime(media.getTime() + 10)">+3 lines</button>
       					<i class="fas fa-redo bar-button" onclick="media.toggleLoop()"></i>
       				</div>
       			

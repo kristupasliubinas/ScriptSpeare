@@ -6,6 +6,7 @@ function State(media) {
 // TODO These are mostly mocked, change these once we have a connection to the back end.
 function getTime(event) {
 	// Of the format HH:MM:SS,xxms
+	//console.log(event);
 	timeStamp = event.attr("href").substring(3);
 	return parseTime(timeStamp);
 };

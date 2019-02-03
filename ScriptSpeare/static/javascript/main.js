@@ -3,14 +3,14 @@ $(document).ready(function(){
 	media = new Media($("#media"));
 	clickState = new ClickState(media);
 	selectState = new selectState(media);
-	state = selectState;
+	state = clickState;
 });
 
 $(document).ready(function(){
 	$("a").click(function(){
 		state.click($(this));
 	});
-})
+});
 
 function setState(stateString) {
 	if (stateString == "select") {
@@ -18,4 +18,4 @@ function setState(stateString) {
 	} else if (stateString == "click") {
 		state = clickState;
 	}
-} 
+} ;

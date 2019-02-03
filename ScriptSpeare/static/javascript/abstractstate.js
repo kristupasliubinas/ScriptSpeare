@@ -19,17 +19,3 @@ function getNextTime(event) {
 function parseTime(timeStamp) {
 	return parseFloat(timeStamp);
 };
-
-// VERY MOCKED, DEMONSTRATES THE LOOP
-function colourTextElements(startTime, endTime) {
-	$("a").each(function() {
-		time = parseTime($(this).attr("href").substring(3));
-		if (time >= startTime && time < endTime) $(this).css( "background-color", "coral" );
-	}); 
-};
-
-function resetColour() {
-	$("a").each(function() {
-		$(this).css( "background-color", "" );
-	}); 
-};

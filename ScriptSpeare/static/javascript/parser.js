@@ -36,7 +36,7 @@ function render(ret) {
         };
 		$wd.setAttribute("start", wd.start);
 		$wd.setAttribute("end", wd.end);
-        $wd.onclick = function() {console.log($wd)};
+        $wd.onclick = function() {state.click($(this))};
         $trans.appendChild($wd);
         currentOffset = wd.endOffset;
     });

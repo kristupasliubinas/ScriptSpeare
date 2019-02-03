@@ -4,7 +4,7 @@ function render(ret) {
     wds = ret['words'] || [];
     transcript = ret['transcript'];
 
-	var $trans = $("#script")[0];
+	var $trans = $(".script")[0];
     $trans.innerHTML = '';
 
     var currentOffset = 0;
@@ -33,14 +33,10 @@ function render(ret) {
         wd.$div = $wd;
         if(wd.start !== undefined) {
             $wd.className = 'success';
-        }
-        $wd.onclick = function() {
-            if(wd.start !== undefined) {
-                console.log(wd.start);
-                $a.currentTime = wd.start;
-                $a.play();
-            }
         };
+		$wd.setAttribute("start", wd.start);
+		$wd.setAttribute("end", wd.end);
+        $wd.onclick = function() {console.log($wd)};
         $trans.appendChild($wd);
         currentOffset = wd.endOffset;
     });

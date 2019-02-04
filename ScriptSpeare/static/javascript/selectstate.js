@@ -30,7 +30,7 @@ $(document).ready(function(){
 			};
 			media.setLoopStart(t1);
 			media.setLoopEnd(t2);
-			colourLoop(media)
+			colourLoop(media);
 		};
 	});
 });

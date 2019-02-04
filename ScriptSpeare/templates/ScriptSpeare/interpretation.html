@@ -16,7 +16,7 @@
 							 					<option value="">Now viewing: {{ interp.lead }}, {{interp.year}}</option>
 							 					<option value ="" >----------------------</option>
 							 				{% for itps in all_interp %}
-							 					<option value="{% url 'show_interpretation' category.slug play.slug itps.slug itps.id %}">{{ itps.lead }}, {{itps.year}}</option>
+							 					<option value="{% url 'show_interpretation' category.slug play.slug itps.id %}">{{ itps.lead }}, {{itps.year}}</option>
 							 				{% endfor %}
 							 				</ul>
 							 			{% else %}
@@ -28,8 +28,8 @@
 								<video poster="" class="col-12" id="media" style="margin-top: 0;"> 
 									<source type="video/mp4" src="/media/{{play.slug}}/{{interp.id}}.mp4">
 								</video>
-								<div id="overlay_left" class="overlay"><a href="{% url 'show_interpretation' category.slug play.slug prev.slug prev.id %}"> < </a></div>
-								<div id="overlay_right" class="overlay"><a href="{% url 'show_interpretation' category.slug play.slug next.slug next.id %}"> > </a></div>
+								<div id="overlay_left" class="overlay"><i class="fas fa-arrow-left" onCLick="location.href='{% url 'show_interpretation' category.slug play.slug prev.id %}'"></i></div>
+								<div id="overlay_right" class="overlay"><i class="fas fa-arrow-right" onCLick="location.href='{% url 'show_interpretation' category.slug play.slug next.id %}'"></i> </a></div>
 							</div>
 							<div class="col-9">
 								<h4>{{play.title}}</h4>

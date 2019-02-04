@@ -45,6 +45,8 @@ function render(ret) {
     var $plaintext = document.createTextNode(txt);
     $trans.appendChild($plaintext);
     currentOffset = transcript.length;
+
+	console.log($trans);
 };
 
 INLINE_JSON = {

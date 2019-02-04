@@ -19,10 +19,25 @@
 					<a id="categories" class="col d-flex justify-content-center"   href="{% url 'show_category' category.slug %}">
 						{{category.name}}
 					</a>
-				
-				
 				{%endfor%}
 			</div>
+			<div class="row d-flex align-items-center justify-content-center"><h1>{{category.name}}</h1></div>
+			<div class="row d-flex align-items-center justify-content-center">
+				{% if category %}
+ 					{% if plays %}
+ 					<ul>
+ 						{% for play in plays %}
+ 						<li><a href="{% url 'show_play' category.slug play.slug  %}">{{ play.title }}</a></li>
+ 						{% endfor %}
+ 					</ul>
+ 					{% else %}
+ 					<strong>No plays currently in category.</strong>
+					{% endif %}
+ 					{% else %}
+ 					The specified category does not exist!
+ 					{% endif %}
+			</div>
+			
 		</div>
 	{% else %}
 		<strong>No categories present!</strong>

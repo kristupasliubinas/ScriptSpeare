@@ -18,6 +18,7 @@ class Category(models.Model):
 class Play(models.Model):	
 	category=models.ForeignKey(Category, on_delete=models.CASCADE,)
 	title=models.CharField(max_length=128,unique=True)
+	abbreviation=models.CharField(max_length=128,unique=True)
 	slug=models.SlugField(unique=True)
 	
 	def save(self, *args, **kwargs):
@@ -28,16 +29,25 @@ class Play(models.Model):
 		return self.title
 
 class Interpretation(models.Model):
+
+	ACCENT_CHOICES=[('UK',"UK"),('US',"US")]
+	TYPE_CHOICES=[('Film',"Film"),('Stage',"Stage"),('Audio',"Audio")]
 	id=models.AutoField(primary_key=True)
 	category=models.ForeignKey(Category, on_delete=models.CASCADE)
 	play=models.ForeignKey(Play, on_delete=models.CASCADE)
-	lead=models.CharField(max_length=128)
-	year=models.IntegerField(default=0)
+	accent=models.CharField(max_length=2, choices=ACCENT_CHOICES,default='UK')
+	type=models.CharField(max_length=10, choices=TYPE_CHOICES,default='Film')
+	year=models.CharField(max_length=4, default=1900)
+	male_lead_name=models.CharField(max_length=30)
+	female_lead_name=models.CharField(max_length=30, blank=True)
 	slug=models.SlugField(unique=True)
 	
 	def save(self, *args, **kwargs):
-		self.slug = slugify(self.lead)
+		self.slug = slugify(self.male_lead_name+self.year)
 		super(Interpretation, self).save(*args, **kwargs)
 	
 	def __str__(self):
-		return self.lead
+		return self.male_lead_name
+		
+		
+		

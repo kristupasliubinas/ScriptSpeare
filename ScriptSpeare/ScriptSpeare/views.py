@@ -39,12 +39,12 @@ def show_play(request, category_name_slug, play_slug):
 		interp_id=interp_id['id__min']
 		interp=Interpretation.objects.get(id=interp_id)
 		if int(interp_id)==1:
-			prev=Interpretation.objects.get(id=interp_id)
+			prev=Interpretation.objects.get(id=13)
 		else:
 			prev=Interpretation.objects.get(id=int(interp_id)-1)
 		
-		if int(interp_id)==3:
-			next=Interpretation.objects.get(id=interp_id)
+		if int(interp_id)==13:
+			next=Interpretation.objects.get(id=1)
 		else:
 			next=Interpretation.objects.get(id=int(interp_id)+1)	
 		
@@ -77,12 +77,12 @@ def show_interpretation(request, category_name_slug, play_slug, interp_id):
 		all_interp=Interpretation.objects.filter(play=play)
 		interp=Interpretation.objects.get(id=interp_id)
 		if int(interp_id)==1:
-			prev=Interpretation.objects.get(id=interp_id)
+			prev=Interpretation.objects.get(id=13)
 		else:
 			prev=Interpretation.objects.get(id=int(interp_id)-1)
 		
-		if int(interp_id)==3:
-			next=Interpretation.objects.get(id=interp_id)
+		if int(interp_id)==13:
+			next=Interpretation.objects.get(id=1)
 		else:
 			next=Interpretation.objects.get(id=int(interp_id)+1)	
 		

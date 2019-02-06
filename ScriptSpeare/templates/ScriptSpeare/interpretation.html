@@ -13,10 +13,10 @@
 								<select class="custom-select" onchange="location = this.value;" >
 									{% if all_interp %}
 							 				<ul>
-							 					<option value="">Now viewing: {{ interp.lead }}, {{interp.year}}</option>
+							 					<option value="">Now viewing: {{ interp.year }}, {{interp.male_lead_name}}</option>
 							 					<option value ="" >----------------------</option>
 							 				{% for itps in all_interp %}
-							 					<option value="{% url 'show_interpretation' category.slug play.slug itps.slug itps.id %}">{{ itps.lead }}, {{itps.year}}</option>
+							 					<option value="{% url 'show_interpretation' category.slug play.slug itps.id %}">{{ itps.year }}, {{itps.male_lead_name}}</option>
 							 				{% endfor %}
 							 				</ul>
 							 			{% else %}
@@ -26,12 +26,14 @@
 							</div>
 							<div class="col-12">
 								<video poster="" class="col-12" id="media" style="margin-top: 0;"> 
-									<source type="video/mp4" src="/media/{{play.slug}}/{{interp.id}}.mp4">
+									<source type="video/mp4" src="https://s3.eu-west-2.amazonaws.com/scriptspeare-media-files/{{category.name}}/{{play.title}}/{{play.abbreviation}}-{{interp.year}}-{{interp.accent}}-{{interp.type}}-{{interp.male_lead_name}}-{{interp.female_lead_name}}.mp4">
 								</video>
+								<div id="overlay_left" class="overlay"><i class="fas fa-arrow-left" onCLick="location.href='{% url 'show_interpretation' category.slug play.slug prev.id %}'"></i></div>
+								<div id="overlay_right" class="overlay"><i class="fas fa-arrow-right" onCLick="location.href='{% url 'show_interpretation' category.slug play.slug next.id %}'"></i> </a></div>
 							</div>
 							<div class="col-9">
 								<h4>{{play.title}}</h4>
-								<p style="margin-bottom: 4em;">{{ interp.lead }},{{interp.year }} </p>
+								<p style="margin-bottom: 4em;">{{ interp.male_lead_name }},{{interp.female_lead_name}},{{interp.year }} </p>
 							</div>
 						</div>
 					</div>
@@ -112,9 +114,7 @@
 								<a href="#" onclick="media.setPlaybackRate(2)">2.0</a>
 							</div>
 						</div>
-						<button class="dropbtn" onclick="media.setTime(media.getTime() - 10)">-3 lines</button>
       					<i id="playbutton" class="fas fa-play-circle bar-button"  style="font-size: 3em;" onclick="togglePauseUI(this, media)"></i>
-						<button class="dropbtn" onclick="media.setTime(media.getTime() + 10)">+3 lines</button>
       					<i class="fas fa-redo bar-button" onclick="media.toggleLoop()"></i>
       				</div>
       			

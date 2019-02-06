@@ -47,9 +47,7 @@ html {
 #footer {
 	background-color: black;
 	color: white;
-}
-
-			
+}		
 select, input {
 	border: 1px solid black !important;
 	border-radius: 0 !important;
@@ -96,4 +94,31 @@ select, input {
 }
 .row-centered {
     text-align:center;
+}
+
+#overlay_right {
+  right: 0;
+}
+
+.overlay {
+  position:absolute ; 
+  top: 0; 
+  color: #FFF; 
+  text-align: center;
+  vertical-align: middle;
+  font-size: 20px;
+  background: rgb(255, 255, 255) transparent;
+  width: 10%;
+  height: 100%;
+  padding: 10px 0;
+  z-index: 2147483648;
+  opacity: 0.0;
+}
+
+.overlay:hover {
+  opacity: 1.0;
+}
+
+#media {
+  z-index: 1;
 }

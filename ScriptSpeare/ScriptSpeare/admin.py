@@ -9,7 +9,7 @@ class CategoryAdmin(admin.ModelAdmin):
 class PlayAdmin(admin.ModelAdmin):
 	prepopulated_fields = {'slug':('title',)}
 class InterpretationAdmin(admin.ModelAdmin):
-	prepopulated_fields = {'slug':('lead',)}
+	prepopulated_fields = {'slug':('male_lead_name','year',)}
 	
 # Update the registration to include this customised interface
 admin.site.register(Category, CategoryAdmin)

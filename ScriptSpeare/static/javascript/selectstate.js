@@ -7,7 +7,7 @@ function selectState(media) {
 		media = event.data
 		if (media.looping) {
 			if (media.getTime() > media.loopEnd || media.getTime() < media.loopStart) media.setTime(media.loopStart);
-		}
+		};
     });
 };
 

@@ -7,6 +7,7 @@ function State(media) {
 function getTime(event) {
 	// Of the format HH:MM:SS,xxms
 	timeStamp = event.attr("start");
+	console.log(timeStamp);
 	return parseTime(timeStamp);
 };
 

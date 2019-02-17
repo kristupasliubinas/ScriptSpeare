@@ -1,6 +1,5 @@
 //Copy Pasted from the Gentle webpage
 //THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
 function render(ret) {
     wds = ret['words'] || [];
     transcript = ret['transcript'];
@@ -8,15 +7,9 @@ function render(ret) {
 	var $trans = $(".script")[0];
     $trans.innerHTML = '';
 
-
+    var currentOffset = 0;
 
 	html = '';
-	oM = new OffsetMover(transcript);
-
-	//Add the html before the first word
-	currentOffset = wds[0].startOffset
-	var txt = transcript.slice(0, oM.get_offset(currentOffset));
-	html += txt;
 
     wds.forEach(function(wd) {
         if(wd.case == 'not-found-in-transcript') {
@@ -27,13 +20,18 @@ function render(ret) {
 
         // Add non-linked text
         if(wd.startOffset > currentOffset) {
-            var txt = transcript.slice(oM.get_offset(currentOffset), oM.get_offset(wd.startOffset));
+            var txt = transcript.slice(currentOffset, wd.startOffset);
 			html += txt;
             currentOffset = wd.startOffset;
         };
 
+		if (['h1', 'h2', 'br', 'b', 'i'].includes(wd.word)) {
+			var txt = transcript.slice(wd.startOffset, wd.endOffset);
+			html += txt;
+			currentOffset = wd.endOffset;
+		} else {
 			var $wd = document.createElement('span');
-			var txt = transcript.slice(oM.get_offset(wd.startOffset), oM.get_offset(wd.endOffset));
+			var txt = transcript.slice(wd.startOffset, wd.endOffset);
 			var $wdText = document.createTextNode(txt);
 			$wd.appendChild($wdText);
 			wd.$div = $wd;
@@ -44,9 +42,10 @@ function render(ret) {
 			$wd.setAttribute("end", wd.end);
 			html += $wd.outerHTML;
 			currentOffset = wd.endOffset;
+		};
     });
 
-    var txt = transcript.slice(oM.get_offset(currentOffset), oM.get_offset(transcript.length));
+    var txt = transcript.slice(currentOffset, transcript.length);
 	html += txt;
     currentOffset = transcript.length;
 	$trans.innerHTML = html;
@@ -57,35 +56,6 @@ function render(ret) {
 		};
 	});
 	console.log($trans.innerHTML);
-};
-
-function OffsetMover(transcript) {
-	this.transcript = transcript;
-	this.cur_transcript_loc = 0;
-	this.in_html_tag = (transcript.charAt(this.cur_transcript_loc) == '<');
-	if (this.in_html_tag) {
-		this.cur_word_loc = 0;
-	} else {
-		this.cur_word_loc = 1;
-	};
-	this.get_offset = function(loc) {
-		if (loc < this.cur_word_loc) throw "Invalid index " + loc + ", the current location is " + this.cur_word_loc; 
-		var c;
-		while (this.cur_word_loc < loc) {
-			c = transcript.charAt(this.cur_transcript_loc);
-			if (this.in_html_tag && c == '>') {
-				this.in_html_tag = false;
-			} else if (!this.in_html_tag && c == '<') {
-				this.in_html_tag = true;
-			} else if (!this.in_html_tag) {
-				this.cur_word_loc += 1;
-			};
-			this.cur_transcript_loc += 1;
-		};
-		if (loc < 100) console.log(loc, this.cur_transcript_loc);
-		return this.cur_transcript_loc;
-	};
-	console.log('created OffsetMover');
 };
 
 $(document).ready(function(){

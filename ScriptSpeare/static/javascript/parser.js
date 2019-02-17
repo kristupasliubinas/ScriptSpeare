@@ -32,6 +32,8 @@ function render(ret) {
 					$trans.appendChild($plaintext);
 					start = i + 1;
 					$trans.appendChild(document.createElement('br'));
+				} else if (c == '|') {
+					 txt = txt.substr(0, i) + ' ' + txt.substr(i + 1);
 				} else if (c == '<') {
 					var $bold = document.createElement('b');
 					$trans.appendChild($bold);
@@ -47,6 +49,22 @@ function render(ret) {
 					$trans = $italic;
 					start = i + 1;
 				} else if (c == '≥') {
+					$trans = $trans_reference;
+					start = 1 + i;
+				} else if (c == '{') {
+					var $scene_header = document.createElement('h2');
+					$trans.appendChild($scene_header);
+					$trans = $scene_header;
+					start = i + 1;
+				} else if (c == '}') {
+					$trans = $trans_reference;
+					start = 1 + i;
+				} else if (c == '(') {
+					var $act_header = document.createElement('h1');
+					$trans.appendChild($act_header);
+					$trans = $act_header;
+					start = i + 1;
+				} else if (c == ')') {
 					$trans = $trans_reference;
 					start = 1 + i;
 				};

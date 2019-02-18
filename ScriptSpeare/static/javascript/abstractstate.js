@@ -14,7 +14,7 @@ function getNextTime(event) {
 	timeStamp = event.attr("end");
 	if (timeStamp) return parseTime(timeStamp)
 	else return media.getDuration();
-}
+};
 
 function parseTime(timeStamp) {
 	return parseFloat(timeStamp);

@@ -12,7 +12,6 @@ function render(ret) {
 
     wds.forEach(function(wd) {
         if(wd.case == 'not-found-in-transcript') {
-            // TODO: show phonemes somewhere
             var txt = ' ' + wd.word;
             var $plaintext = document.createTextNode(txt);
             $trans.appendChild($plaintext);
@@ -37,33 +36,24 @@ function render(ret) {
 					$trans.appendChild($bold);
 					$trans = $bold;
 					start = i + 1;
-				} else if (c == '>') {
-					$trans = $trans_reference;
-					$trans.appendChild(document.createTextNode(' '));
-					start = 1 + i;
-				} else if (c == '≤') {
+				}  else if (c == '≤' || c == '⊆') {
 					var $italic = document.createElement('i');
 					$trans.appendChild($italic);
 					$trans = $italic;
 					start = i + 1;
-				} else if (c == '≥') {
-					$trans = $trans_reference;
-					start = 1 + i;
-				} else if (c == '{') {
+				}  else if (c == '{') {
 					var $scene_header = document.createElement('h2');
 					$trans.appendChild($scene_header);
 					$trans = $scene_header;
 					start = i + 1;
-				} else if (c == '}') {
-					$trans = $trans_reference;
-					start = 1 + i;
-				} else if (c == '(') {
+				}  else if (c == '(') {
 					var $act_header = document.createElement('h1');
 					$trans.appendChild($act_header);
 					$trans = $act_header;
 					start = i + 1;
-				} else if (c == ')') {
+				} else if (c == '>' || c == '≥' || c == '}' || c == ')' || c == '⊇') {
 					$trans = $trans_reference;
+					$trans.appendChild(document.createTextNode(' '));
 					start = 1 + i;
 				};
 			};
@@ -91,6 +81,7 @@ function render(ret) {
     var $plaintext = document.createTextNode(txt);
     $trans.appendChild($plaintext);
     currentOffset = transcript.length;
+	console.log($trans_reference.innerHTML);
 };
 
 

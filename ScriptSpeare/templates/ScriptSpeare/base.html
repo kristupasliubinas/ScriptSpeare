@@ -16,6 +16,7 @@
 		<script src="{% static "javascript/mediaplayer.js" %}"></script>
 		<script src="{% static "javascript/main.js" %}"></script>
 		<script src="{% static "javascript/ui_elements.js" %}"></script>
+		<script src="{% static "javascript/overlays.js" %}"></script>
 		<script src="{% static "javascript/parser.js" %}"></script>
 		<script src="{% static "javascript/time_auto_adjusted.json" %}"></script>
 	</head>
@@ -24,10 +25,10 @@
 		<div class="container-fluid">
 			<div class="row" id="header">
 				<div class="col-12 text-center">
-					<h4>Scriptspeare</h4>
+					<h4><a href="{% url 'index' %}" style="text-decoration: none; color:white;">Scriptspeare</a></h4>
 				</div>
 			</div>
-			<div class="row" id="content">
+			<div class="row" id="content" >
 			{% block body_block %}
 			{% endblock %}
 			{% block bar_block %}

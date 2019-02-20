@@ -1,7 +1,7 @@
 function State(media) {
 	this.media = media;
 	this.click = function() {;};
-}
+};
 
 // TODO These are mostly mocked, change these once we have a connection to the back end.
 function getTime(event) {

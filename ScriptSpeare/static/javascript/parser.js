@@ -9,7 +9,7 @@ function render(ret) {
     $trans.innerHTML = '';
 
     var currentOffset = 0;
-
+	var curLine = 0;
     wds.forEach(function(wd) {
         if(wd.case == 'not-found-in-transcript') {
             var txt = ' ' + wd.word;
@@ -27,8 +27,12 @@ function render(ret) {
 				if (c == '\n') {
 					var $plaintext = document.createTextNode(txt.slice(start, i));
 					$trans.appendChild($plaintext);
-					start = i + 1;
 					$trans.appendChild(document.createElement('br'));
+					var j;
+					for (j = i + 1; txt.charAt(j) != '^'; j++) ;
+					curLine = txt.slice(i + 1, j);
+					i = j;
+					start = j + 1;
 				} else if (c == '|') {
 					 txt = txt.substr(0, i) + ' ' + txt.substr(i + 1);
 				} else if (c == '<') {
@@ -72,6 +76,7 @@ function render(ret) {
         };
 		$wd.setAttribute("start", wd.start);
 		$wd.setAttribute("end", wd.end);
+		$wd.setAttribute("line", curLine);
         $wd.onclick = function() {state.click($(this))};
         $trans.appendChild($wd);
         currentOffset = wd.endOffset;

@@ -85,6 +85,37 @@ function render(ret) {
 };
 
 
+function getTranscript(url) {
+	xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			console.log(this.responseText);
+			var jsonTrans = JSON.parse(this.responseText);
+			render(jsonTrans);
+		};
+	};
+	console.log('Making request');
+	xhttp.open("GET", url, true);
+	xhttp.send();
+	console.log('Sent request');
+};
+
+/*
 $(document).ready(function(){
-	render(JSON);
+	getTranscript('https://s3.eu-west-2.amazonaws.com/scriptspeare-media-files/Comedy/Merchant/MOV-1973-UK-Film-Laurence_Olivier-Joan_Plowright.json');
+});*/
+
+
+$(document).ready(function(){
+	var url = 'https://s3.eu-west-2.amazonaws.com/scriptspeare-media-files/Comedy/Merchant/MOV-1973-UK-Film-Laurence_Olivier-Joan_Plowright.json';
+	$.ajax({
+        type: "GET",
+        url: url,
+        async:true,
+        dataType : 'json',
+        success: function(data) {
+			console.log('ok');
+			render(data);
+        }
+    });
 });

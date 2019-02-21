@@ -29,10 +29,12 @@ function render(ret) {
 					$trans.appendChild($plaintext);
 					$trans.appendChild(document.createElement('br'));
 					var j;
+					if ('0' > txt.charAt(j) || '9' < txt.charAt(j)) start = i + 1;
+					else {
 					for (j = i + 1; txt.charAt(j) != '^'; j++) ;
 					curLine = txt.slice(i + 1, j);
 					i = j;
-					start = j + 1;
+					start = j + 1;};
 				} else if (c == '|') {
 					 txt = txt.substr(0, i) + ' ' + txt.substr(i + 1);
 				} else if (c == '<') {
@@ -89,6 +91,12 @@ function render(ret) {
 	console.log($trans_reference.innerHTML);
 };
 
+function displayFetchError() {
+	var $trans = $(".script")[0];
+	var $trans_reference = $trans;
+    $trans.appendChild(document.createElement('h2').appendChild(document.createTextNode('Failed to fetch the transcript')));
+};
+
 function getTranscript(url) {
 	$.ajax({
         type: "GET",
@@ -96,8 +104,7 @@ function getTranscript(url) {
         async:true,
         dataType : 'json',
         success: function(data) {
-			console.log('ok');
 			render(data);
         }
-    });
+    }).fail(displayFetchError);
 };

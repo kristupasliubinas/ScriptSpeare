@@ -98,6 +98,7 @@ function displayFetchError() {
 };
 
 function getTranscript(url) {
+	console.log(url);
 	$.ajax({
         type: "GET",
         url: url,

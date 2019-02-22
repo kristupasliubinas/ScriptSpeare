@@ -29,12 +29,10 @@ function render(ret) {
 					$trans.appendChild($plaintext);
 					$trans.appendChild(document.createElement('br'));
 					var j;
-					if ('0' > txt.charAt(j) || '9' < txt.charAt(j)) start = i + 1;
-					else {
 					for (j = i + 1; txt.charAt(j) != '^'; j++) ;
 					curLine = txt.slice(i + 1, j);
 					i = j;
-					start = j + 1;};
+					start = j + 1;
 				} else if (c == '|') {
 					 txt = txt.substr(0, i) + ' ' + txt.substr(i + 1);
 				} else if (c == '<') {

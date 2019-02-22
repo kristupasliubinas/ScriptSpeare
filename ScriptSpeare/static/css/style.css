@@ -122,3 +122,23 @@ select, input {
 #media {
   z-index: 1;
 }
+
+.not_in_audio {
+	color: #555; 
+}
+
+.not_in_audio b {
+	color: #000; 
+}
+
+.not_in_audio i {
+	color: #222; 
+}
+
+.not_in_audio h1 {
+	color: #000; 
+}
+
+.not_in_audio h2{
+	color: #000; 
+}

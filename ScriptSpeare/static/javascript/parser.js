@@ -73,8 +73,8 @@ function render(ret) {
         var $wdText = document.createTextNode(txt);
         $wd.appendChild($wdText);
         wd.$div = $wd;
-        if(wd.start !== undefined) {
-            $wd.className = 'success';
+        if(wd.start === undefined) {
+            $wd.className = 'not_in_audio';
         };
 		$wd.setAttribute("start", wd.start);
 		$wd.setAttribute("end", wd.end);

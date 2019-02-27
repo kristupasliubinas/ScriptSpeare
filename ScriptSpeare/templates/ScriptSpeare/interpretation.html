@@ -25,7 +25,7 @@
 								</select>
 							</div>
 							<div class="col-12">
-								<video poster="" class="col-12" id="media" style="margin-top: 0;"> 
+								<video poster="" class="col-12" id="media" style="margin-top: 0;">
 									<source type="video/mp4" src="https://s3.eu-west-2.amazonaws.com/scriptspeare-media-files/{{category.name}}/{{play.title}}/{{play.abbreviation}}-{{interp.year}}-{{interp.accent}}-{{interp.type}}-{{interp.male_lead_name}}-{{interp.female_lead_name}}.mp4">
 								</video>
 								<div id="overlay_left" class="overlay"><i class="fas fa-arrow-left" onCLick="location.href='{% url 'show_interpretation' category.slug play.slug prev.id %}'"></i></div>
@@ -42,8 +42,8 @@
 					<div class="container-fluid">
 						<div class="row">
 							<div class="col-9 script">
-               					
-								
+								<div class="text-scroll">
+
            						<p class="stage-dir"><a href="#t=00:00:00,000"> RE-ENTER SEYTON. </a></p>
 								<p class="char">MACBETH</p>
 								<p><a href="#t=00:00:02,060"> Wherefore was that cry? </a></p>
@@ -61,7 +61,28 @@
 								<a href="#t=00:01:08,300"> That struts and frets his hour upon the stage </a><br>
 								<a href="#t=00:01:13,020"> And then is heard no more. It is a tale </a><br>
 								<a href="#t=00:01:19,160"> Told by an idiot, full of sound and fury, </a><br>
-								<a href="#t=00:01:28,040"> Signifying nothing.</a></p>	
+								<a href="#t=00:01:28,040"> Signifying nothing.</a></p>
+								<a> a lot of really long intentional text for a placeholder that holds text in place</a>
+								<a> a lot of really long intentional text for a placeholder that holds text in place</a>
+								<a> a lot of really long intentional text for a placeholder that holds text in place</a>
+								<a> a lot of really long intentional text for a placeholder that holds text in place</a>
+								<a> a lot of really long intentional text for a placeholder that holds text in place</a>
+								<a> a lot of really long intentional text for a placeholder that holds text in place</a>
+								<a> a lot of really long intentional text for a placeholder that holds text in place</a>
+								<a> a lot of really long intentional text for a placeholder that holds text in place</a>
+								<a> a lot of really long intentional text for a placeholder that holds text in place</a>
+								<a> a lot of really long intentional text for a placeholder that holds text in place</a>
+								<a> a lot of really long intentional text for a placeholder that holds text in place</a>
+								<a> a lot of really long intentional text for a placeholder that holds text in place</a>
+								<a> a lot of really long intentional text for a placeholder that holds text in place</a>
+								<a> a lot of really long intentional text for a placeholder that holds text in place</a>
+								<a> a lot of really long intentional text for a placeholder that holds text in place</a>
+								<a> a lot of really long intentional text for a placeholder that holds text in place</a>
+								<a> a lot of really long intentional text for a placeholder that holds text in place</a>
+								<a> a lot of really long intentional text for a placeholder that holds text in place</a>
+								<a> a lot of really long intentional text for a placeholder that holds text in place</a>
+								<a> a lot of really long intentional text for a placeholder that holds text in place</a>
+								</div>
 							</div>
 							<div class="col-3">
 								<form class="form">
@@ -97,7 +118,7 @@
 							</div>
 						</div>
 					</div>
-					
+
 				</div>
 			</div>
 {% endblock %}
@@ -117,6 +138,6 @@
       					<i id="playbutton" class="fas fa-play-circle bar-button"  style="font-size: 3em;" onclick="togglePauseUI(this, media)"></i>
       					<i class="fas fa-redo bar-button" onclick="media.toggleLoop()"></i>
       				</div>
-      			
+
     		</div>
 {% endblock %}

@@ -1,4 +1,4 @@
-{% extends 'Scriptspeare/base.html' %}
+{% extends 'ScriptSpeare/base.html' %}
 {% load staticfiles %}
 
 {% block body_block %}
@@ -8,7 +8,7 @@
 			<div class="row d-flex align-items-center justify-content-center"><h1>Choose a category:</h1></div>
 			<div class="row d-flex align-items-center justify-content-center" >
 				{%for category in categories %}
-					<a  class="col d-flex justify-content-center" href="{% url 'show_category' category.slug %}">
+					<a  class="col d-flex justify-content-center" href="{% url 'show_category' category %}">
 						<img id="categories" src="/static/images/{{category}}.jpg"  >
 					</a>
 				
@@ -16,8 +16,8 @@
 			</div>
 			<div class="row d-flex align-items-center justify-content-center" >
 				{%for category in categories %}
-					<a id="categories" class="col d-flex justify-content-center"   href="{% url 'show_category' category.slug %}">
-						{{category.name}}
+					<a id="categories" class="col d-flex justify-content-center"   href="{% url 'show_category' category %}">
+						{{category}}
 					</a>
 				{%endfor%}
 			</div>
@@ -27,7 +27,7 @@
  					{% if plays %}
  					<ul>
  						{% for play in plays %}
- 						<li><a href="{% url 'show_play' category.slug play.slug  %}">{{ play.title }}</a></li>
+ 						<li><a href="{% url 'show_play' category play  %}">{{ play }}</a></li>
  						{% endfor %}
  					</ul>
  					{% else %}

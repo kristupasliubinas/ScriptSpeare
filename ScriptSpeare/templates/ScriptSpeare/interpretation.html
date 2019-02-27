@@ -1,5 +1,13 @@
-{% extends 'Scriptspeare/base.html' %}
+{% extends 'ScriptSpeare/base.html' %}
 {% load staticfiles %}
+
+{% block head_block %}
+<script>
+$(document).ready(function() {
+	getTranscript('https://s3.eu-west-2.amazonaws.com/scriptspeare-media-files/{{category}}/{{abbr}}/{{interp.0}}-{{interp.1}}-{{interp.2}}-{{interp.3}}-{{interp.4}}-{{interp.5}}.json');
+});
+</script>
+{% endblock %}
 
 {% block body_block %}
 			<div class="row" id="content">
@@ -8,15 +16,15 @@
 						<div class="row">
 							<div class="col-12">
 								<h1>
-               						{{play.title}}<br>
+               						{{play}}<br>
                					</h1>
 								<select class="custom-select" onchange="location = this.value;" >
 									{% if all_interp %}
 							 				<ul>
-							 					<option value="">Now viewing: {{ interp.year }}, {{interp.male_lead_name}}</option>
+							 					<option value="">Now viewing: {{ interp.1}},{{interp.2}},{{interp.3}},{{interp.4}},{{interp.5}}</option>
 							 					<option value ="" >----------------------</option>
 							 				{% for itps in all_interp %}
-							 					<option value="{% url 'show_interpretation' category.slug play.slug itps.id %}">{{ itps.year }}, {{itps.male_lead_name}}</option>
+							 					<option value="{% url 'show_interpretation' category play interp_id %}">{{ itps.1}},{{itps.2}},{{itps.3}},{{itps.4}},{{itps.5}}</option>
 							 				{% endfor %}
 							 				</ul>
 							 			{% else %}
@@ -25,15 +33,19 @@
 								</select>
 							</div>
 							<div class="col-12">
-								<video poster="" class="col-12" id="media" style="margin-top: 0;">
-									<source type="video/mp4" src="https://s3.eu-west-2.amazonaws.com/scriptspeare-media-files/{{category.name}}/{{play.title}}/{{play.abbreviation}}-{{interp.year}}-{{interp.accent}}-{{interp.type}}-{{interp.male_lead_name}}-{{interp.female_lead_name}}.mp4">
+								<video poster="" class="col-12" id="media" style="margin-top: 0;"> 
+									<source type="video/mp4" src="https://s3.eu-west-2.amazonaws.com/scriptspeare-media-files/{{category}}
+									/{{abbr}}/{{interp.0}}-{{interp.1}}-{{interp.2}}-{{interp.3}}-{{interp.4}}-{{interp.5}}.mp4">
 								</video>
-								<div id="overlay_left" class="overlay"><i class="fas fa-arrow-left" onCLick="location.href='{% url 'show_interpretation' category.slug play.slug prev.id %}'"></i></div>
-								<div id="overlay_right" class="overlay"><i class="fas fa-arrow-right" onCLick="location.href='{% url 'show_interpretation' category.slug play.slug next.id %}'"></i> </a></div>
+								<div id="overlay_left" class="overlay"><i class="fas fa-arrow-left" onCLick="location.href='{% url 'show_interpretation' category play prev %}'"></i></div>
+								<div id="overlay_right" class="overlay"><i class="fas fa-arrow-right" onCLick="location.href='{% url 'show_interpretation' category play next %}'"></i></div>
 							</div>
-							<div class="col-9">
-								<h4>{{play.title}}</h4>
-								<p style="margin-bottom: 4em;">{{ interp.male_lead_name }},{{interp.female_lead_name}},{{interp.year }} </p>
+							<div class="col-9 data">
+								<b>Lead Actor 1:</b> {{ interp.4 }}</br>
+								<b>Lead Actor 2:</b> {{interp.5}}</br>
+								<b>Year:</b> {{interp.1}}</br>
+								<b>Accent:</b> {{interp.2}}</br>
+								<b>Type of adaptation:</b> {{interp.3}}</br>
 							</div>
 						</div>
 					</div>

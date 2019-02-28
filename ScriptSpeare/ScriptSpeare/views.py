@@ -101,10 +101,12 @@ def show_play(request, category, play, interp_id=0):
 		
 	return render(request, 'ScriptSpeare/interpretation.html', context_dict)
 	
-def show_interpretation(request, category, play, interp_id):
+def show_interpretation(request, category, play, interp_id, line=None):
 	context_dict={}
-	
 	try:
+		if line == None or line < 0:
+			line = 0
+		context_dict['line'] = line
 		category = category
 		play=play
 		if category=='Comedy':
@@ -151,6 +153,7 @@ def show_interpretation(request, category, play, interp_id):
 		context_dict['category']=category
 		
 	except Play.DoesNotExist:
+		context_dict['line'] = 0
 		context_dict['all_interp']=None
 		context_dict['intrep'] = None
 		context_dict['play'] = None

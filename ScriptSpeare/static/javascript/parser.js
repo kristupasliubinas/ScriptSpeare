@@ -5,11 +5,18 @@ function render(ret) {
     transcript = ret['transcript'];
 
 	var $trans = $(".script")[0];
-	var $trans_reference = $trans;
+	var htmlStack = [];
+	//var $trans_reference = $trans;
     $trans.innerHTML = '';
 
     var currentOffset = 0;
 	var curLine = 0;
+	var $lineLink = document.createElement('a');
+	$lineLink.setAttribute("id", curLine);
+	$lineLink.setAttribute("href", "#" + curLine);
+	$trans.appendChild($lineLink);
+	htmlStack.push($trans);
+	$trans = $lineLink;
     wds.forEach(function(wd) {
         if(wd.case == 'not-found-in-transcript') {
             var txt = ' ' + wd.word;
@@ -31,6 +38,13 @@ function render(ret) {
 					var j;
 					for (j = i + 1; txt.charAt(j) != '^'; j++) ;
 					curLine = txt.slice(i + 1, j);
+					$trans = htmlStack.pop();
+					var $lineLink = document.createElement('a');
+					$lineLink.setAttribute("id", curLine);
+					$lineLink.setAttribute("href", "#" + curLine);
+					$trans.appendChild($lineLink);
+					htmlStack.push($trans);
+					$trans = $lineLink;
 					i = j;
 					start = j + 1;
 				} else if (c == '|') {
@@ -38,25 +52,29 @@ function render(ret) {
 				} else if (c == '<') {
 					var $bold = document.createElement('b');
 					$trans.appendChild($bold);
+					htmlStack.push($trans);
 					$trans = $bold;
 					start = i + 1;
 				}  else if (c == '≤' || c == '⊆') {
 					var $italic = document.createElement('i');
 					$trans.appendChild($italic);
+					htmlStack.push($trans);
 					$trans = $italic;
 					start = i + 1;
 				}  else if (c == '{') {
 					var $scene_header = document.createElement('h2');
 					$trans.appendChild($scene_header);
+					htmlStack.push($trans);
 					$trans = $scene_header;
 					start = i + 1;
 				}  else if (c == '(') {
 					var $act_header = document.createElement('h1');
 					$trans.appendChild($act_header);
+					htmlStack.push($trans);
 					$trans = $act_header;
 					start = i + 1;
 				} else if (c == '>' || c == '≥' || c == '}' || c == ')' || c == '⊇') {
-					$trans = $trans_reference;
+					$trans = htmlStack.pop();
 					$trans.appendChild(document.createTextNode(' '));
 					start = 1 + i;
 				};
@@ -76,7 +94,6 @@ function render(ret) {
         };
 		$wd.setAttribute("start", wd.start);
 		$wd.setAttribute("end", wd.end);
-		$wd.setAttribute("line", curLine);
         $wd.onclick = function() {state.click($(this))};
         $trans.appendChild($wd);
         currentOffset = wd.endOffset;
@@ -86,14 +103,25 @@ function render(ret) {
     var $plaintext = document.createTextNode(txt);
     $trans.appendChild($plaintext);
     currentOffset = transcript.length;
-	console.log($trans_reference.innerHTML);
+	console.log($(".script")[0].innerHTML);
+	setLinkedTime();
 };
 
 function displayFetchError() {
 	var $trans = $(".script")[0];
-	var $trans_reference = $trans;
+	//var $trans_reference = $trans;
     $trans.appendChild(document.createElement('h2').appendChild(document.createTextNode('Failed to fetch the transcript')));
 };
+
+function setLinkedTime() {
+	lineLink = $(window.location.hash);
+	if (lineLink[0] == undefined) return;
+
+	lineLink[0].scrollIntoView();
+
+	time = parseInt($(lineLink.find("span")[0]).attr('start'));
+	if (time) media.setTime(time);
+}
 
 function getTranscript(url) {
 	console.log(url);

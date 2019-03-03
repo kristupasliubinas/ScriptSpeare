@@ -46,13 +46,13 @@ def show_play(request, category, play, interp_id=0):
 			elif play=='A Midsummer Night\'s Dream':
 				abbr='Midsummer'
 			elif play=='Twelfth Night':
-				abbr='Twelth'
+				abbr='Twelfth'
 			else:
 				abbr=play
 		elif category=='Tragedy':
 			if play=='Romeo and Juliet':
 				abbr='Romeo'
-			if play=='Julius Caesar':
+			elif play=='Julius Caesar':
 				abbr='Julius'
 			else:
 				abbr=play
@@ -111,13 +111,13 @@ def show_interpretation(request, category, play, interp_id):
 			elif play=='A Midsummer Night\'s Dream':
 				abbr='Midsummer'
 			elif play=='Twelfth Night':
-				abbr='Twelth'
+				abbr='Twelfth'
 			else:
 				abbr=play
 		elif category=='Tragedy':
 			if play=='Romeo and Juliet':
 				abbr='Romeo'
-			if play=='Julius Caesar':
+			elif play=='Julius Caesar':
 				abbr='Julius'
 			else:
 				abbr=play

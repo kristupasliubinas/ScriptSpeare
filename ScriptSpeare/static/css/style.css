@@ -100,23 +100,32 @@ select, input {
     text-align:center;
 }
 
-#overlay_right {
-  right: 0;
-}
+
+
 
 .overlay {
   position:absolute ;
-  top: 0;
-  color: #FFF;
-  text-align: center;
+  top: 35%;
+  color: #FFF;  
   vertical-align: middle;
-  font-size: 20px;
+  font-size: 3em;
   background: rgb(255, 255, 255) transparent;
-  width: 10%;
-  height: 100%;
+  width: 100%;
+  height: 30%;
   padding: 10px 0;
   z-index: 2147483648;
   opacity: 0.0;
+}
+#overlay_right {
+	position:absolute ;
+  	right: 0;
+}
+#overlay_middle {
+	position:absolute ;
+}
+#overlay_left {
+	position:absolute ;
+ 	left: 0;
 }
 
 .overlay:hover {

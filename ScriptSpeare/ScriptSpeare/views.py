@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.db.models import Avg, Max, Min
-from ScriptSpeare.models import Category,Play, Interpretation
+
 import requests
 
 def index(request):

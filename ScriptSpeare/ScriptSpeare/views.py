@@ -6,21 +6,19 @@ import requests
 
 def index(request):
 
-	category_list=["Comedy","Tragedy","History"]
+	category_list=["Comedy","Tragedy"]
 	context_dict = {'categories': category_list}
 	return render(request, 'ScriptSpeare/index.html', context_dict)
 	
 def show_category(request, category):
 	context_dict={}
-	category_list=["Comedy","Tragedy","History"]
+	category_list=["Comedy","Tragedy"]
 	
 	try:
 		category = category
 		
 		if category=="Comedy":
 			plays=['Merchant of Venice','A Midsummer Night\'s Dream', 'Twelfth Night']
-		elif category=="History":
-			plays=""
 		elif category=="Tragedy":
 			plays=['Macbeth', 'Hamlet', 'Romeo and Juliet', 'Julius Caesar']
 		

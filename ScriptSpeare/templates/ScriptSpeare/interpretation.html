@@ -21,10 +21,10 @@ $(document).ready(function() {
 								<select class="custom-select" onchange="location = this.value;" >
 									{% if all_interp %}
 							 				<ul>
-							 					<option value="">Now viewing: {{ interp.1}},{{interp.2}},{{interp.3}},{{interp.4}},{{interp.5}}</option>
+							 					<option value=""> {{interp.3}} : {{interp.2}}, {{ interp.1}} ({{interp.4}}/{{interp.5}})</option>
 							 					<option value ="" >----------------------</option>
 							 				{% for itps in all_interp %}
-							 					<option value="{% url 'show_interpretation' category play interp_id %}">{{ itps.1}},{{itps.2}},{{itps.3}},{{itps.4}},{{itps.5}}</option>
+							 					<option value="{% url 'show_interpretation' category play interp_id %}">{{itps.3}} : {{itps.2}}, {{ itps.1}} ({{itps.4}}/{{itps.5}})</option>
 							 				{% endfor %}
 							 				</ul>
 							 			{% else %}
@@ -42,13 +42,6 @@ $(document).ready(function() {
 								<i id="overlay-play" id="overlay_middle" class="fas fa-play-circle bar-button "   onclick="togglePauseUI(this, media)"></i>
 								<i class="fas fa-arrow-right"  id="overlay_right" onCLick="location.href='{% url 'show_interpretation' category play next %}'"></i>
 								</div>
-							</div>
-							<div class="col-9 data">
-								<b>Lead Actor 1:</b> {{ interp.4 }}</br>
-								<b>Lead Actor 2:</b> {{interp.5}}</br>
-								<b>Year:</b> {{interp.1}}</br>
-								<b>Accent:</b> {{interp.2}}</br>
-								<b>Type of adaptation:</b> {{interp.3}}</br>
 							</div>
 						</div>
 					</div>

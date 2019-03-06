@@ -92,7 +92,7 @@ function render(ret) {
         var $wdText = document.createTextNode(txt);
         $wd.appendChild($wdText);
         wd.$div = $wd;
-        if(wd.start === undefined) {
+        if(wd.case === 'not-found-in-audio') {
             $wd.className = 'not_in_audio';
         };
 		$wd.setAttribute("start", wd.start);

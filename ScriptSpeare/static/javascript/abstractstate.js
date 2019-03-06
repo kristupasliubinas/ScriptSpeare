@@ -12,7 +12,7 @@ function getTime(event) {
 
 function getNextTime(event) {
 	timeStamp = event.attr("end");
-	if (timeStamp) return parseTime(timeStamp)
+	if (timeStamp) return parseTime(timeStamp);
 	else return media.getDuration();
 };
 

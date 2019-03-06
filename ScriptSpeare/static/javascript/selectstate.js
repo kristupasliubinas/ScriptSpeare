@@ -1,8 +1,26 @@
 function selectState(media) {
 	State.call(media);
 	this.isStartClick = true;
-	this.waitStart = 0;
-	this.click = function() {};
+	this.waitStart = null;
+	this.click = function(obj) {
+		if (this.isStartClick) {
+			this.waitStart = obj;
+			this.isStartClick = false;
+			resetColour();
+		} else {
+			if (this.waitStart.start <= obj.start) {
+				startTime = getTime(this.waitStart);
+				endTime = getNextTime(obj);
+			} else {
+				startTime = getTime(obj);
+				endTime = getNextTime(this.waitStart);
+			};
+			media.setLoopStart(startTime);
+			media.setLoopEnd(endTime);
+			this.isStartClick = true;
+			colourLoop(media);
+		};
+	};
 	media.addTimeUpdate(function(event){
 		media = event.data
 		if (media.looping) {
@@ -10,60 +28,6 @@ function selectState(media) {
 		};
     });
 };
-
-$(document).ready(function(){
-	document.addEventListener("mouseup", function(){
-		if (state.constructor.name == "selectState") {
-			//TODO error checking
-			selection = window.getSelection();
-			// 4  for selecting forwards, 2 for backwards
-			position = selection.anchorNode.compareDocumentPosition(selection.focusNode);
-			span1 = $(getParentSpan(selection.anchorNode, position % 4));
-			span2 = $(getParentSpan(selection.focusNode, (position + 2 ) % 4));
-
-			if (!(span1 && span2)) return;
-
-			resetColour();
-			t1 = parseTime(span1.attr("start"));
-			t2 = parseTime(span2.attr("start"));
-			if (t1 > t2) {
-				t1 = parseTime(span1.attr("end"));
-			} else {
-				t2 = parseTime(span2.attr("end"));
-			};
-			media.setLoopStart(t1);
-			media.setLoopEnd(t2);
-			colourLoop(media);
-		};
-	});
-});
-
-// Position is 0 for being the fist node in the selection, 2 for being the last.
-function getParentSpan(element, position) {
-	if (isInScript(element) && element.parentElement.nodeName != "SPAN") {
-		console.log(position + " :" + element);
-		if (position == 2) {
-			return getParentSpan(element.nextSibling, position);
-		} else {
-			return getParentSpan(element.previousSibling, position);
-		};
-	};
-	while (element.nodeName != "SPAN") {
-		element = element.parentElement;
-		if (!element) return null;
-	};
-	return element;
-};
-
-function isInScript(element) {
-	while (element.parentElement) {
-		element = parentElement;
-		if (element.className == 'col-9 script') {
-			return true;
-		};
-	};
-	return false;
-}
 
 function colourLoop(media) {
 	spans = $("span");
@@ -82,5 +46,5 @@ function resetColour() {
 			$(this).css( "background-color", "" );
 		};
 	}); 
-	console.log("reset cou");
+	console.log("reset colour");
 };

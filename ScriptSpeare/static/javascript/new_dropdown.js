@@ -8,7 +8,7 @@ function coffeemyFunctionSearch() {
   input = document.getElementById("coffeemySearch");
   filter = input.value.toUpperCase();
   ul = document.getElementById("coffeemyAdaptations");
-  options = ul.getElementsByTagName("option");
+  options = ul.getElementsByTagName("a");
   for (i = 0; i < options.length; i++) {
     if (options[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
       options[i].style.display = "";

@@ -28,7 +28,7 @@ $(document).ready(function() {
 
 
 										<div class="coffeerow">
-									<div class="coffeeleft" style="background-color:#bbb;">
+									<div class="coffeeleft" >
 										<h2>Category</h2>
 										<input type="text" id="coffeemySearch" onkeyup="coffeemyFunctionSearch()" placeholder="Search.." title="Type in a category">
 										<ul id="coffeemyMenu">
@@ -39,13 +39,13 @@ $(document).ready(function() {
 										</ul>
 									</div>
 
-									<div class="coffeeright" 
+									<div class="coffeeright" >
 										<h2>Adaptation list</h2>
 										<div class="coffeescroller">
 											{% if all_interp %}
 											    <ul id="coffeemyAdaptations">
 											    {% for itps in all_interp %}
-											      <option value="{% url 'show_interpretation' category play interp_id %}">{{itps.3}} : {{itps.2}}, {{ itps.1}} ({{itps.4}}/{{itps.5}})</option>
+											      <a href="{% url 'show_interpretation' category play interp_id %}">{{itps.3}} : {{itps.2}}, {{ itps.1}} ({{itps.4}}/{{itps.5}})</a>
 											    {% endfor %}
 											    </ul>
 											  {% else %}

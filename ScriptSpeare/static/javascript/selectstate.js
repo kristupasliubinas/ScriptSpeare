@@ -40,7 +40,8 @@ $(document).ready(function(){
 
 // Position is 0 for being the fist node in the selection, 2 for being the last.
 function getParentSpan(element, position) {
-	if (element.parentElement.className == 'col-9 script' && element.nodeName != "SPAN") {
+	if (isInScript(element) && element.parentElement.nodeName != "SPAN") {
+		console.log(position + " :" + element);
 		if (position == 2) {
 			return getParentSpan(element.nextSibling, position);
 		} else {
@@ -53,6 +54,16 @@ function getParentSpan(element, position) {
 	};
 	return element;
 };
+
+function isInScript(element) {
+	while (element.parentElement) {
+		element = parentElement;
+		if (element.className == 'col-9 script') {
+			return true;
+		};
+	};
+	return false;
+}
 
 function colourLoop(media) {
 	spans = $("span");

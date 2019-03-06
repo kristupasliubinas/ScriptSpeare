@@ -17,3 +17,19 @@ function coffeemyFunctionSearch() {
     }
   }
 }
+
+function coffeefilterFunction(filter) {
+  var   ul, i;
+  if (filter == "ALL") {
+    filter = ":";
+  }
+  ul = document.getElementById("coffeemyAdaptations");
+  options = ul.getElementsByTagName("a");
+  for (i = 0; i < options.length; i++) {
+    if (options[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+      options[i].style.display = "";
+    } else {
+      options[i].style.display = "none";
+    }
+  }
+}

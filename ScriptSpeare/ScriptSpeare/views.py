@@ -60,6 +60,19 @@ def show_play(request, category, play, interp_id=0):
 		response=requests.get(url)
 		test=response.json()
 		all_interp=response.json()
+		film=[]
+		stage=[]
+		audio=[]
+		for item in all_interp:
+			if item[3]=="Film":
+				film.append(item)
+			elif item[3]=="Stage":
+				stage.append(item)
+			else:
+				audio.append(item)
+			
+		
+		
 		if len(all_interp)>1:
 			interp_id_max=len(all_interp)-1
 		else:
@@ -83,6 +96,9 @@ def show_play(request, category, play, interp_id=0):
 		context_dict['abbr']=abbr
 		context_dict['prev']=prev
 		context_dict['next']=next
+		context_dict['film']=film
+		context_dict['stage']=stage
+		context_dict['audio']=audio
 		context_dict['category']=category
 		
 	except Play.DoesNotExist:
@@ -92,6 +108,9 @@ def show_play(request, category, play, interp_id=0):
 		context_dict['play'] = None
 		context_dict['prev']=None
 		context_dict['next']=None
+		context_dict['film']=None
+		context_dict['stage']=None
+		context_dict['audio']=None
 		context_dict['category']=None
 		
 		

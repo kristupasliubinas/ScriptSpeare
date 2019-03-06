@@ -161,10 +161,9 @@ select, input {
 
 
 .coffeedropbtn {
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  width: 605px;
+  color: black;
+  background-color:white;
+  width: 100%;
   height: 40px;
   border-style: solid;
   border-color: black
@@ -198,7 +197,7 @@ select, input {
   display: block;
 }
 
-.coffeedropdown a:hover {background-color: #ddd;}
+.coffeedropdown a:hover {  background-color:white;}
 
 .coffeeshow {display: block;}
 
@@ -212,6 +211,7 @@ select, input {
 
 .coffeerow {
   display: flex;
+
 }
 
 /* Left column (menu) */
@@ -228,6 +228,7 @@ select, input {
 .coffeeright {
   flex: 65%;
   padding: 15px;
+  background-color:white;
 }
 
 /* Style the search box */
@@ -246,7 +247,6 @@ select, input {
 }
 
 #coffeemyMenu li a {
-  backgrxound-color: #f6f6f6;
   padding: 12px;
   text-decoration: none;
   font-size: 18px;

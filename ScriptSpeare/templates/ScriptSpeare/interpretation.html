@@ -14,38 +14,38 @@ $(document).ready(function() {
 				<div class="col-6" id="content-left">
 					<div class="container-fluid">
 						<div class="row">
-							<div class="col-12">
-								<h1>
-               						{{play}}<br>
-               					</h1>
+							<h1 style="margin-top:2vh; margin-bottom:0;"> {{play}}<br>
+               				</h1>
+							<div class="col-12" onmouseover="coffeemyFunctionDrop()"  onmouseout="coffeemyFunctionDrop()">
 
 
 
-								<div class="coffeedropdown">
-  								<button onclick="coffeemyFunctionDrop()" class="coffeedropbtn">{{interp.3}} : {{interp.2}}, {{ interp.1}} ({{interp.4}}/{{interp.5}})</button>
-								  <div id="coffeemyDropdown" class="coffeedropdown-content">
+								<div class="coffeedropdown" >
+  								
+  								<button  class="col-12 coffeedropbtn ">{{interp.3}} : {{interp.2}}, {{ interp.1}} ({{interp.6}}/{{interp.7}})</button>
+								<div id="coffeemyDropdown" class="coffeedropdown-content">
+								<input class="col-10"type="text" id="coffeemySearch" onkeyup="coffeemyFunctionSearch()" placeholder="Search.." title="Type in a category">
 
 
-
-										<div class="coffeerow">
-									<div class="coffeeleft" >
-										<h2>Category</h2>
-										<input type="text" id="coffeemySearch" onkeyup="coffeemyFunctionSearch()" placeholder="Search.." title="Type in a category">
+										<div class=" row coffeerow">
+									<div class="coffeeleft col-2" >
+										<h5>Category</h5>
+										
 										<ul id="coffeemyMenu">
-											<li><a href="#" onclick="coffeefilterFunction(this.innerHTML)">ALL</a></li>
-											<li><a href="#" onclick="coffeefilterFunction(this.innerHTML)" >FILM</a></li>
-											<li><a href="#" onclick="coffeefilterFunction(this.innerHTML)" >STAGE</a></li>
-											<li><a href="#" onclick="coffeefilterFunction(this.innerHTML)" >AUDIO</a></li>
+											<li><a href="#" onmouseover="coffeefilterFunction(this.innerHTML)">ALL</a></li>
+											<li><a href="#" onmouseover="coffeefilterFunction(this.innerHTML)" >FILM</a></li>
+											<li><a href="#" onmouseover="coffeefilterFunction(this.innerHTML)" >STAGE</a></li>
+											<li><a href="#" onmouseover="coffeefilterFunction(this.innerHTML)" >AUDIO</a></li>
 										</ul>
 									</div>
 
-									<div class="coffeeright" >
-										<h2>Adaptation list</h2>
-										<div class="coffeescroller">
+									<div class="coffeeright col-10" >
+										<h5>Adaptation list</h5>
+										<div class="coffeescroller col-12">
 											{% if all_interp %}
 											    <ul id="coffeemyAdaptations">
 											    {% for itps in all_interp %}
-											      <a href="{% url 'show_interpretation' category play interp_id %}">{{itps.3}} : {{itps.2}}, {{ itps.1}} ({{itps.4}}/{{itps.5}})</a>
+											      <a href="{% url 'show_interpretation' category play itps.8 %}">{{itps.3}} : {{itps.2}}, {{ itps.1}} ({{itps.6}}/{{itps.7}})</a>
 											    {% endfor %}
 											    </ul>
 											  {% else %}

@@ -75,6 +75,9 @@ function render(ret) {
 					start = i + 1;
 				} else if (c == '>' || c == '≥' || c == '}' || c == ')' || c == '⊇') {
 					$trans = htmlStack.pop();
+					if ($trans == $(".script")[0]) {
+						htmlStack.push($trans);
+					};
 					$trans.appendChild(document.createTextNode(' '));
 					start = 1 + i;
 				};

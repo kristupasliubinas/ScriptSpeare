@@ -8,6 +8,9 @@ html {
 #header h4 {
 	padding: 3px 0;
 }
+#content{
+	max-height: 100vh;
+}
 #content > .col-6 {
 	padding-left: 30px;
 	padding-right: 20px;
@@ -53,14 +56,13 @@ select, input {
 	border-radius: 0 !important;
 }
 
-.text-scroll{
-  width: 340px;
-  height: 700px;
-  overflow: scroll;
-}
+
 
 .script{
 	  font-family: 'Cormorant Garamond', serif;
+	  height: 75vh;
+	  overflow: scroll;
+	  overflow-x: hidden;
 }
 .stage-dir {
     color: rgb(100, 100, 100);
@@ -163,12 +165,13 @@ select, input {
 .coffeedropbtn {
   color: black;
   background-color:white;
+  height: 3em;
   width: 100%;
-  height: 40px;
   border-style: solid;
   border-color: black
   border: none;
   cursor: pointer;
+  padding:0;
 }
 
 .coffeedropbtn:hover, .dropbtn:focus {
@@ -210,23 +213,25 @@ select, input {
 
 
 .coffeerow {
-  display: flex;
+  margin: 0;
 
 }
 
 /* Left column (menu) */
 .coffeeleft {
-  flex: 35%;
+  position: relative;
+  width:100%;
   padding: 15px 0;
 }
 
-.coffeeleft h2 {
+.coffeeleft h4 {
   padding-left: 8px;
 }
 
 /* Right column (page content) */
 .coffeeright {
-  flex: 65%;
+  max-height:300pt;
+  width:100%;
   padding: 15px;
   background-color:white;
 }
@@ -260,7 +265,7 @@ select, input {
 
 
 .coffeescroller {
-  width: 400px;
-  height: 300px;
+  max-height:90%;
   overflow:scroll;
+  overflow-x: hidden;
 }

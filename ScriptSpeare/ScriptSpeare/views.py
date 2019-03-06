@@ -58,20 +58,15 @@ def show_play(request, category, play, interp_id=0):
 		
 		url="https://1zct9uiole.execute-api.eu-west-2.amazonaws.com/prod/get-adaptation-list?category="+category+"&play="+abbr
 		response=requests.get(url)
-		test=response.json()
 		all_interp=response.json()
-		film=[]
-		stage=[]
-		audio=[]
-		for item in all_interp:
-			if item[3]=="Film":
-				film.append(item)
-			elif item[3]=="Stage":
-				stage.append(item)
-			else:
-				audio.append(item)
-			
-		
+		all_interp_edit=all_interp[:]
+		for el in all_interp:
+			el.append(str.replace(el[4],'_',' '))
+			el.append(str.replace(el[5],'_',' '))
+		id=0
+		for el in all_interp:
+			el.append(id)
+			id=id+1
 		
 		if len(all_interp)>1:
 			interp_id_max=len(all_interp)-1
@@ -90,27 +85,23 @@ def show_play(request, category, play, interp_id=0):
 			
 			
 		context_dict['all_interp']=all_interp
+		context_dict['pretty']=all_interp_edit
 		context_dict['interp']=interp
 		context_dict['interp_id']=interp_id
 		context_dict['play']=play
 		context_dict['abbr']=abbr
 		context_dict['prev']=prev
 		context_dict['next']=next
-		context_dict['film']=film
-		context_dict['stage']=stage
-		context_dict['audio']=audio
 		context_dict['category']=category
 		
 	except Play.DoesNotExist:
 		context_dict['all_interp']=None
+		context_dict['pretty']=None
 		context_dict['abbr']=None
 		context_dict['intrep'] = None
 		context_dict['play'] = None
 		context_dict['prev']=None
 		context_dict['next']=None
-		context_dict['film']=None
-		context_dict['stage']=None
-		context_dict['audio']=None
 		context_dict['category']=None
 		
 		
@@ -141,8 +132,14 @@ def show_interpretation(request, category, play, interp_id):
 				abbr=play
 		url="https://1zct9uiole.execute-api.eu-west-2.amazonaws.com/prod/get-adaptation-list?category="+category+"&play="+abbr
 		response=requests.get(url)
-		test=response.json()
 		all_interp=response.json()
+		for el in all_interp:
+			el.append(str.replace(el[4],'_',' '))
+			el.append(str.replace(el[5],'_',' '))
+		id=0
+		for el in all_interp:
+			el.append(id)
+			id=id+1
 		interp_id=int(interp_id)
 		interp_id_max=len(all_interp)-1
 		interp=all_interp[interp_id]

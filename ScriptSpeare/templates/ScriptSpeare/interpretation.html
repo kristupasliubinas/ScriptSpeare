@@ -32,10 +32,10 @@ $(document).ready(function() {
 										<h2>Category</h2>
 										<input type="text" id="coffeemySearch" onkeyup="coffeemyFunctionSearch()" placeholder="Search.." title="Type in a category">
 										<ul id="coffeemyMenu">
-											<li><a href="#">ALL</a></li>
-											<li><a href="#" value="FILM">FILM</a></li>
-											<li><a href="#" value="STAGE">STAGE</a></li>
-											<li><a href="#" value="AUDIO">AUDIO</a></li>
+											<li><a href="#" onclick="coffeefilterFunction(this.innerHTML)">ALL</a></li>
+											<li><a href="#" onclick="coffeefilterFunction(this.innerHTML)" >FILM</a></li>
+											<li><a href="#" onclick="coffeefilterFunction(this.innerHTML)" >STAGE</a></li>
+											<li><a href="#" onclick="coffeefilterFunction(this.innerHTML)" >AUDIO</a></li>
 										</ul>
 									</div>
 

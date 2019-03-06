@@ -39,7 +39,6 @@ function render(ret) {
 					for (j = i + 1; txt.charAt(j) != '^'; j++) ;
 					curLine = txt.slice(i + 1, j);
 					$trans = htmlStack.pop();
-					console.log($trans);
 					var $lineLink = document.createElement('a');
 					$lineLink.setAttribute("id", curLine);
 					$lineLink.setAttribute("href", "#" + curLine);
@@ -79,7 +78,6 @@ function render(ret) {
 					if ($trans == $(".script")[0]) {
 						htmlStack.push($trans);
 					};
-					console.log($trans + ' god');
 					$trans.appendChild(document.createTextNode(' '));
 					start = 1 + i;
 				};

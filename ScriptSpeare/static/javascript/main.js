@@ -5,6 +5,7 @@ $(document).ready(function(){
 	selectState = new selectState(media);
 	state = clickState;
 	scriptMemory = new ScriptMemory(media);
+	var globalCurrentLine = 0;
 });
 
 $(document).ready(function(){

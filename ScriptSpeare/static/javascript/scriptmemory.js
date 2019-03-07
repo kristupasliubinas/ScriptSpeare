@@ -9,6 +9,7 @@ function ScriptMemory(media) {
 		lineShower.text("Line: " + line.line + "/" + line.count);
 		globalCurrentLine = line.line;
     });
+
 };
 
 function findLine(script, time) {

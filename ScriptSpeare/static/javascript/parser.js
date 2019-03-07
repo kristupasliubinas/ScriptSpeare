@@ -11,9 +11,12 @@ function render(ret) {
 
     var currentOffset = 0;
 	var curLine = 0;
+	var lineSwitchTime = 0;
 	var $lineLink = document.createElement('a');
 	$lineLink.setAttribute("id", curLine);
 	$lineLink.setAttribute("href", "#" + curLine);
+	$lineLink.setAttribute("start", lineSwitchTime);
+	var $lastLink = $lineLink;
 	$trans.appendChild($lineLink);
 	htmlStack.push($trans);
 	$trans = $lineLink;
@@ -39,9 +42,12 @@ function render(ret) {
 					for (j = i + 1; txt.charAt(j) != '^'; j++) ;
 					curLine = txt.slice(i + 1, j);
 					$trans = htmlStack.pop();
+					$lastLink.setAttribute("end", lineSwitchTime);
 					var $lineLink = document.createElement('a');
 					$lineLink.setAttribute("id", curLine);
 					$lineLink.setAttribute("href", "#" + curLine);
+					$lineLink.setAttribute("start", lineSwitchTime);
+					$lastLink = $lineLink;
 					$trans.appendChild($lineLink);
 					htmlStack.push($trans);
 					$trans = $lineLink;
@@ -97,6 +103,9 @@ function render(ret) {
         };
 		$wd.setAttribute("start", wd.start);
 		$wd.setAttribute("end", wd.end);
+		if (wd.end != undefined) {
+			lineSwitchTime = wd.end;
+		};
         $wd.onclick = function() {state.click($(this))};
         $trans.appendChild($wd);
         currentOffset = wd.endOffset;
@@ -106,8 +115,19 @@ function render(ret) {
     var $plaintext = document.createTextNode(txt);
     $trans.appendChild($plaintext);
     currentOffset = transcript.length;
-	console.log($(".script")[0].innerHTML);
 	setLinkedTime();
+	console.log($(".script")[0].innerHTML);
+};
+
+function timeLines(script) {
+	console.log("Time");
+	script.children("a").each(function() {
+		spans = $(this).children("span");
+		startTime = $(spans[0]).attr("start");
+		endTime = $(spans[spans.length]).attr("end");
+		this.setAttribute("start", startTime);
+		this.setAttribute("end", endTime);
+	});
 };
 
 function displayFetchError() {

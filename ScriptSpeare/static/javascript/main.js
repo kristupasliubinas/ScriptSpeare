@@ -5,8 +5,9 @@ $(document).ready(function(){
 	selectState = new selectState(media);
 	state = clickState;
 	scriptMemory = new ScriptMemory(media);
-	var globalCurrentLine = 0;
 });
+
+var globalCurrentLine;
 
 $(document).ready(function(){
 	$("a").click(function(){
@@ -20,4 +21,9 @@ function setState(stateString) {
 	} else if (stateString == "click") {
 		state = clickState;
 	}
-} ;
+};
+
+function getCurrentLine() {
+	if (globalCurrentLine === undefined) return 0;
+	return globalCurrentLine;
+};

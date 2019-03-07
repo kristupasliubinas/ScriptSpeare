@@ -1,11 +1,13 @@
 function ScriptMemory(media) {
-	this.script = $(".script");
-	console.log(this.script);
+
 	media.addTimeUpdate(function(event){
 		media = event.data;
 		time = media.getTime();
 		script = $(".script");
-		console.log(findLine(script, time));
+		line = findLine(script, time);
+		lineShower = $("small");
+		lineShower.text("Line: " + line.line + "/" + line.count);
+		document.cookie = "line=" + line;
     });
 };
 
@@ -13,6 +15,7 @@ function findLine(script, time) {
 	lines = script.children("a");
 	curLine = null;
 	var line;
+	var i;
 	for (i = 0; i < lines.length; i++) {
 		line = $(lines[i]);
 		if (time <= parseTime(line.attr("end")) && curLine == null) {
@@ -22,9 +25,5 @@ function findLine(script, time) {
 			line.css( "background-color", "" );
 		}
 	};
-	return curLine;
+	return {line : curLine.attr("id"), count : i};
 };
-/*
-function colourLine(line) {
-	line.css( "background-color", "#aaaaaa" );
-};*/

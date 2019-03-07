@@ -1,5 +1,5 @@
 function ScriptMemory(media) {
-
+	this.line = 0;
 	media.addTimeUpdate(function(event){
 		media = event.data;
 		time = media.getTime();
@@ -7,7 +7,7 @@ function ScriptMemory(media) {
 		line = findLine(script, time);
 		lineShower = $("small");
 		lineShower.text("Line: " + line.line + "/" + line.count);
-		document.cookie = "line=" + line;
+		globalCurrentLine = line.line;
     });
 };
 

@@ -4,6 +4,7 @@ $(document).ready(function(){
 	clickState = new ClickState(media);
 	selectState = new selectState(media);
 	state = clickState;
+	scriptMemory = new ScriptMemory(media);
 });
 
 $(document).ready(function(){

@@ -7,7 +7,7 @@ function selectState(media) {
 			this.waitStart = obj;
 			this.isStartClick = false;
 			resetColour();
-			obj.css("background-color", "#aa00aa");
+			obj.css("background-color", "#ffff00");
 		} else {
 			if (getTime(this.waitStart) <= getTime(obj)) {
 				startTime = getTime(this.waitStart);

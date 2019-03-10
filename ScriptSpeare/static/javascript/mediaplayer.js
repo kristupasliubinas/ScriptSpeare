@@ -19,15 +19,14 @@ function Media(jQueryMedia) {
 	this.looping = false;
 	this.toggleLoop = function() {this.looping = !this.looping;};
 
-	this.setLoopStart = function(time) {this.loopStart = time;};
-	this.setLoopEnd = function(time) {
-		if (this.loopEnd < this.loopStart) {
-			this.loopStart = this.loopEnd;
-			this.loopEnd = time;
+	this.setLoop = function(t1, t2) {
+		if (t1 < t2) {
+			this.loopStart = t1;
+			this.loopEnd = t2;
 		} else {
-			this.loopEnd = time; 
-		}
-		console.log(this.loopStart + " " + this.loopEnd);
+			this.loopStart = t2;
+			this.loopEnd = t1;
+		};
 	};
 	this.addTimeUpdate = function(timeUpdate) {
 		this.jQueryMedia.on("timeupdate", null, this, timeUpdate);

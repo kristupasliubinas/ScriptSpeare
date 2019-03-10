@@ -1,5 +1,7 @@
 ﻿//Copy Pasted from the Gentle webpage
 //THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+LINE = "=line";
+
 function render(ret) {
     wds = ret['words'] || [];
     transcript = ret['transcript'];
@@ -13,7 +15,7 @@ function render(ret) {
 	var curLine = 0;
 	var $lineLink = document.createElement('a');
 	$lineLink.setAttribute("id", curLine);
-	$lineLink.setAttribute("href", "#" + curLine);
+	$lineLink.setAttribute("href", "#" + curLine + LINE);
 	$trans.appendChild($lineLink);
 	htmlStack.push($trans);
 	$trans = $lineLink;
@@ -41,7 +43,7 @@ function render(ret) {
 					$trans = htmlStack.pop();
 					var $lineLink = document.createElement('a');
 					$lineLink.setAttribute("id", curLine);
-					$lineLink.setAttribute("href", "#" + curLine);
+					$lineLink.setAttribute("href", "#" + curLine + LINE);
 					$trans.appendChild($lineLink);
 					htmlStack.push($trans);
 					$trans = $lineLink;
@@ -117,7 +119,7 @@ function displayFetchError() {
 };
 
 function setLinkedTime() {
-	lineLink = $(window.location.hash);
+	lineLink = $(window.location.hash.substring(0, window.location.hash.length - LINE.length));
 	if (lineLink[0] == undefined) return;
 
 	lineLink[0].scrollIntoView();

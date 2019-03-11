@@ -19,7 +19,7 @@ function findLine(script, time) {
 	var i;
 	for (i = 0; i < lines.length; i++) {
 		line = $(lines[i]);
-		if (time <= parseTime(line.attr("end")) && curLine == null) {
+		if (curLine == null && time <= parseTime(line.attr("end"))) {
 			curLine = line;
 			line.css( "background-color", "#aaaaaa" );
 		} else {

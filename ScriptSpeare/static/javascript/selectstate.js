@@ -7,16 +7,16 @@ function selectState(media) {
 			this.waitStart = obj;
 			this.isStartClick = false;
 			resetColour();
+			obj.css("background-color", "#ffff00");
 		} else {
-			if (this.waitStart.start <= obj.start) {
+			if (getTime(this.waitStart) <= getTime(obj)) {
 				startTime = getTime(this.waitStart);
 				endTime = getNextTime(obj);
 			} else {
 				startTime = getTime(obj);
 				endTime = getNextTime(this.waitStart);
 			};
-			media.setLoopStart(startTime);
-			media.setLoopEnd(endTime);
+			media.setLoop(startTime, endTime);
 			this.isStartClick = true;
 			colourLoop(media);
 		};

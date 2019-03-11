@@ -12,10 +12,8 @@ function render(ret) {
 	var lineSwitchTime = 0;
     var currentOffset = 0;
 	var curLine = 0;
-	var $lineLink = createLink(curLine, lineSwitchTime);
+	var $lineLink = pushLinkToStack(curLine, lineSwitchTime, $trans, htmlStack);
 	var $lastLink = $lineLink;
-	$trans.appendChild($lineLink);
-	htmlStack.push($trans);
 	$trans = $lineLink;
     wds.forEach(function(wd) {
         if(wd.case == 'not-found-in-transcript') {
@@ -40,10 +38,8 @@ function render(ret) {
 					curLine = txt.slice(i + 1, j);
 					$trans = htmlStack.pop();
 					$lastLink.setAttribute("end", lineSwitchTime);
-					var $lineLink = createLink(curLine, lineSwitchTime);
+					$lineLink = pushLinkToStack(curLine, lineSwitchTime, $trans, htmlStack)
 					$lastLink = $lineLink;
-					$trans.appendChild($lineLink);
-					htmlStack.push($trans);
 					$trans = $lineLink;
 					i = j;
 					start = j + 1;
@@ -123,6 +119,13 @@ function newElemenet(element, htmlStack,  $trans) {
 	htmlStack.push($trans);
 	return $el;
 };
+
+function pushLinkToStack(curLine, lineSwitchTime, $trans, htmlStack) {
+	var $lineLink = createLink(curLine, lineSwitchTime);
+	$trans.appendChild($lineLink);
+	htmlStack.push($trans);
+	return $lineLink;
+}
 
 function createLink(curLine, lineSwitchTime) {
 	var $lineLink = document.createElement('a');

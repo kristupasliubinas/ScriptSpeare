@@ -24,6 +24,6 @@ function setState(stateString) {
 };
 
 function getCurrentLineLink() {
-	if (globalCurrentLine === undefined) return 0;
-	return globalCurrentLine + LINE;
+	if (globalCurrentLine === undefined) return "";
+	return '#' + globalCurrentLine + LINE;
 };

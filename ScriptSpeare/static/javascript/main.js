@@ -23,7 +23,7 @@ function setState(stateString) {
 	}
 };
 
-function getCurrentLine() {
+function getCurrentLineLink() {
 	if (globalCurrentLine === undefined) return 0;
-	return globalCurrentLine;
+	return globalCurrentLine + LINE;
 };

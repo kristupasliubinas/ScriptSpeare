@@ -38,9 +38,9 @@ $(document).ready(function() {
 									/{{abbr}}/{{interp.0}}-{{interp.1}}-{{interp.2}}-{{interp.3}}-{{interp.4}}-{{interp.5}}.mp4">
 								</video>
 								<div class="overlay d-flex align-items-center justify-content-center">
-								<i class="fas fa-arrow-left " id="overlay_left" onCLick="location.href='{% url 'show_interpretation' category play prev %}' + '#' + getCurrentLine()"></i>
+								<i class="fas fa-arrow-left " id="overlay_left" onCLick="location.href='{% url 'show_interpretation' category play prev %}' + '#' + getCurrentLineLink()"></i>
 								<i id="overlay-play" id="overlay_middle" class="fas fa-play-circle bar-button "   onclick="togglePauseUI(this, media)"></i>
-								<i class="fas fa-arrow-right"  id="overlay_right" onCLick="location.href='{% url 'show_interpretation' category play next %}' + '#' + getCurrentLine()"></i>
+								<i class="fas fa-arrow-right"  id="overlay_right" onCLick="location.href='{% url 'show_interpretation' category play next %}' + '#' + getCurrentLineLink()"></i>
 								</div>
 							</div>
 						</div>

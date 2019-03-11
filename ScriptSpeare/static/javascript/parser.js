@@ -8,14 +8,15 @@ function render(ret) {
 
 	var $trans = $(".script")[0];
 	var htmlStack = [];
-	//var $trans_reference = $trans;
     $trans.innerHTML = '';
-
+	var lineSwitchTime = 0;
     var currentOffset = 0;
 	var curLine = 0;
 	var $lineLink = document.createElement('a');
 	$lineLink.setAttribute("id", curLine);
 	$lineLink.setAttribute("href", "#" + curLine + LINE);
+	$lineLink.setAttribute("start", lineSwitchTime);
+	var $lastLink = $lineLink;
 	$trans.appendChild($lineLink);
 	htmlStack.push($trans);
 	$trans = $lineLink;
@@ -41,9 +42,12 @@ function render(ret) {
 					for (j = i + 1; txt.charAt(j) != '^'; j++) ;
 					curLine = txt.slice(i + 1, j);
 					$trans = htmlStack.pop();
+					$lastLink.setAttribute("end", lineSwitchTime);
 					var $lineLink = document.createElement('a');
 					$lineLink.setAttribute("id", curLine);
 					$lineLink.setAttribute("href", "#" + curLine + LINE);
+					$lineLink.setAttribute("start", lineSwitchTime);
+					$lastLink = $lineLink;
 					$trans.appendChild($lineLink);
 					htmlStack.push($trans);
 					$trans = $lineLink;
@@ -97,6 +101,9 @@ function render(ret) {
         if(wd.case === 'not-found-in-audio') {
             $wd.className = 'not_in_audio';
         };
+		if (wd.end != undefined) {
+			lineSwitchTime = wd.end;
+		};
 		$wd.setAttribute("start", wd.start);
 		$wd.setAttribute("end", wd.end);
         $wd.onclick = function() {state.click($(this))};

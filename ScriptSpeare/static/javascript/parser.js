@@ -1,5 +1,7 @@
 ﻿//Copy Pasted from the Gentle webpage
 //THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+LINE = "=line";
+
 function render(ret) {
     wds = ret['words'] || [];
     transcript = ret['transcript'];
@@ -11,12 +13,9 @@ function render(ret) {
 
     var currentOffset = 0;
 	var curLine = 0;
-	var lineSwitchTime = 0;
 	var $lineLink = document.createElement('a');
 	$lineLink.setAttribute("id", curLine);
-	$lineLink.setAttribute("href", "#" + curLine);
-	$lineLink.setAttribute("start", lineSwitchTime);
-	var $lastLink = $lineLink;
+	$lineLink.setAttribute("href", "#" + curLine + LINE);
 	$trans.appendChild($lineLink);
 	htmlStack.push($trans);
 	$trans = $lineLink;
@@ -42,12 +41,9 @@ function render(ret) {
 					for (j = i + 1; txt.charAt(j) != '^'; j++) ;
 					curLine = txt.slice(i + 1, j);
 					$trans = htmlStack.pop();
-					$lastLink.setAttribute("end", lineSwitchTime);
 					var $lineLink = document.createElement('a');
 					$lineLink.setAttribute("id", curLine);
-					$lineLink.setAttribute("href", "#" + curLine);
-					$lineLink.setAttribute("start", lineSwitchTime);
-					$lastLink = $lineLink;
+					$lineLink.setAttribute("href", "#" + curLine + LINE);
 					$trans.appendChild($lineLink);
 					htmlStack.push($trans);
 					$trans = $lineLink;
@@ -103,9 +99,6 @@ function render(ret) {
         };
 		$wd.setAttribute("start", wd.start);
 		$wd.setAttribute("end", wd.end);
-		if (wd.end != undefined) {
-			lineSwitchTime = wd.end;
-		};
         $wd.onclick = function() {state.click($(this))};
         $trans.appendChild($wd);
         currentOffset = wd.endOffset;
@@ -115,19 +108,8 @@ function render(ret) {
     var $plaintext = document.createTextNode(txt);
     $trans.appendChild($plaintext);
     currentOffset = transcript.length;
-	setLinkedTime();
 	console.log($(".script")[0].innerHTML);
-};
-
-function timeLines(script) {
-	console.log("Time");
-	script.children("a").each(function() {
-		spans = $(this).children("span");
-		startTime = $(spans[0]).attr("start");
-		endTime = $(spans[spans.length]).attr("end");
-		this.setAttribute("start", startTime);
-		this.setAttribute("end", endTime);
-	});
+	setLinkedTime();
 };
 
 function displayFetchError() {
@@ -137,7 +119,7 @@ function displayFetchError() {
 };
 
 function setLinkedTime() {
-	lineLink = $(window.location.hash);
+	lineLink = $(window.location.hash.substring(0, window.location.hash.length - LINE.length));
 	if (lineLink[0] == undefined) return;
 
 	lineLink[0].scrollIntoView();
@@ -158,19 +140,3 @@ function getTranscript(url) {
         }
     }).fail(displayFetchError);
 };
-
-function getCookie(cname) {
-  var name = cname + "=";
-  var decodedCookie = decodeURIComponent(document.cookie);
-  var ca = decodedCookie.split(';');
-  for(var i = 0; i <ca.length; i++) {
-    var c = ca[i];
-    while (c.charAt(0) == ' ') {
-      c = c.substring(1);
-    }
-    if (c.indexOf(name) == 0) {
-      return c.substring(name.length, c.length);
-    }
-  }
-  return "";
-}

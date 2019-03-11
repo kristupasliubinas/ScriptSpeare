@@ -12,10 +12,7 @@ function render(ret) {
 	var lineSwitchTime = 0;
     var currentOffset = 0;
 	var curLine = 0;
-	var $lineLink = document.createElement('a');
-	$lineLink.setAttribute("id", curLine);
-	$lineLink.setAttribute("href", "#" + curLine + LINE);
-	$lineLink.setAttribute("start", lineSwitchTime);
+	var $lineLink = createLink(curLine, lineSwitchTime);
 	var $lastLink = $lineLink;
 	$trans.appendChild($lineLink);
 	htmlStack.push($trans);
@@ -43,10 +40,7 @@ function render(ret) {
 					curLine = txt.slice(i + 1, j);
 					$trans = htmlStack.pop();
 					$lastLink.setAttribute("end", lineSwitchTime);
-					var $lineLink = document.createElement('a');
-					$lineLink.setAttribute("id", curLine);
-					$lineLink.setAttribute("href", "#" + curLine + LINE);
-					$lineLink.setAttribute("start", lineSwitchTime);
+					var $lineLink = createLink(curLine, lineSwitchTime);
 					$lastLink = $lineLink;
 					$trans.appendChild($lineLink);
 					htmlStack.push($trans);
@@ -133,7 +127,15 @@ function setLinkedTime() {
 
 	time = parseInt($(lineLink.find("span")[0]).attr('start'));
 	if (time) media.setTime(time);
-}
+};
+
+function createLink(curLine, lineSwitchTime) {
+	var $lineLink = document.createElement('a');
+	$lineLink.setAttribute("id", curLine);
+	$lineLink.setAttribute("href", "#" + curLine + LINE);
+	$lineLink.setAttribute("start", lineSwitchTime);
+	return $lineLink;
+};
 
 function getTranscript(url) {
 	console.log(url);

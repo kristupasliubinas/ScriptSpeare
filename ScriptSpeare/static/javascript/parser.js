@@ -50,28 +50,16 @@ function render(ret) {
 				} else if (c == '|') {
 					 txt = txt.substr(0, i) + ' ' + txt.substr(i + 1);
 				} else if (c == '<') {
-					var $bold = document.createElement('b');
-					$trans.appendChild($bold);
-					htmlStack.push($trans);
-					$trans = $bold;
+					$trans = newElemenet('b', htmlStack, $trans);
 					start = i + 1;
 				}  else if (c == '≤' || c == '⊆') {
-					var $italic = document.createElement('i');
-					$trans.appendChild($italic);
-					htmlStack.push($trans);
-					$trans = $italic;
+					$trans = $trans = newElemenet('i', htmlStack, $trans);
 					start = i + 1;
 				}  else if (c == '{') {
-					var $scene_header = document.createElement('h2');
-					$trans.appendChild($scene_header);
-					htmlStack.push($trans);
-					$trans = $scene_header;
+					$trans = $trans = newElemenet('h2', htmlStack, $trans);
 					start = i + 1;
 				}  else if (c == '(') {
-					var $act_header = document.createElement('h1');
-					$trans.appendChild($act_header);
-					htmlStack.push($trans);
-					$trans = $act_header;
+					$trans = $trans = newElemenet('h1', htmlStack, $trans);
 					start = i + 1;
 				} else if (c == '>' || c == '≥' || c == '}' || c == ')' || c == '⊇') {
 					$trans = htmlStack.pop();
@@ -127,6 +115,13 @@ function setLinkedTime() {
 
 	time = parseInt($(lineLink.find("span")[0]).attr('start'));
 	if (time) media.setTime(time);
+};
+
+function newElemenet(element, htmlStack,  $trans) {
+	var $el = document.createElement(element);
+	$trans.appendChild($el);
+	htmlStack.push($trans);
+	return $el;
 };
 
 function createLink(curLine, lineSwitchTime) {

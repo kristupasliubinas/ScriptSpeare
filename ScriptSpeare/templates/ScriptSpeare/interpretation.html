@@ -16,13 +16,13 @@ $(document).ready(function() {
 						<div class="row">
 							<h1 style="margin-top:2vh; margin-bottom:0;"> {{play}}<br>
                				</h1>
-							<div class="col-12" onmouseover="coffeemyFunctionDrop()"  onmouseout="coffeemyFunctionDrop()">
+							<div class="col-12"  >
 
 
 
 								<div class="coffeedropdown" >
   								
-  								<button  class="col-12 coffeedropbtn ">{{interp.3}} : {{interp.2}}, {{ interp.1}} ({{interp.6}}/{{interp.7}})</button>
+  								<button  class="col-12 coffeedropbtn " onClick="coffeemyFunctionDrop()">{{interp.3}} : {{interp.2}}, {{ interp.1}} ({{interp.6}}/{{interp.7}})</button>
 								<div id="coffeemyDropdown" class="coffeedropdown-content">
 								<input class="col-10"type="text" id="coffeemySearch" onkeyup="coffeemyFunctionSearch()" placeholder="Search.." title="Type in a category">
 

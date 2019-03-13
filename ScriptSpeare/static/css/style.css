@@ -159,16 +159,12 @@ select, input {
 .not_in_audio h2{
 	color: #000;
 }
-
-
-
-
 .coffeedropbtn {
   color: black;
   background-color:white;
-  height: 3em;
-  margin: 0 !important;
-  width: 40vw;
+  margin-top: 0 !important;
+  min-height: 3em;
+  
   border-style: solid;
   border-color: black
   border: none;
@@ -182,14 +178,17 @@ select, input {
 
 .coffeedropdown {
   position: relative;
-  display: inline-block;
+  display: block;
+  width:100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .coffeedropdown-content {
   display: none;
   position: absolute;
   background-color: #f1f1f1;
-  min-width: 605px;
+  min-width: 30vw;
   overflow: auto;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 10;

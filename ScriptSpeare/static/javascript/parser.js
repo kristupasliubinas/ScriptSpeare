@@ -1,21 +1,19 @@
 ﻿//Copy Pasted from the Gentle webpage
 //THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+LINE = "=line";
+
 function render(ret) {
     wds = ret['words'] || [];
     transcript = ret['transcript'];
 
 	var $trans = $(".script")[0];
 	var htmlStack = [];
-	//var $trans_reference = $trans;
     $trans.innerHTML = '';
-
+	var lineSwitchTime = 0;
     var currentOffset = 0;
 	var curLine = 0;
-	var $lineLink = document.createElement('a');
-	$lineLink.setAttribute("id", curLine);
-	$lineLink.setAttribute("href", "#" + curLine);
-	$trans.appendChild($lineLink);
-	htmlStack.push($trans);
+	var $lineLink = pushLinkToStack(curLine, lineSwitchTime, $trans, htmlStack);
+	var $lastLink = $lineLink;
 	$trans = $lineLink;
     wds.forEach(function(wd) {
         if(wd.case == 'not-found-in-transcript') {
@@ -39,39 +37,25 @@ function render(ret) {
 					for (j = i + 1; txt.charAt(j) != '^'; j++) ;
 					curLine = txt.slice(i + 1, j);
 					$trans = htmlStack.pop();
-					var $lineLink = document.createElement('a');
-					$lineLink.setAttribute("id", curLine);
-					$lineLink.setAttribute("href", "#" + curLine);
-					$trans.appendChild($lineLink);
-					htmlStack.push($trans);
+					$lastLink.setAttribute("end", lineSwitchTime);
+					$lineLink = pushLinkToStack(curLine, lineSwitchTime, $trans, htmlStack)
+					$lastLink = $lineLink;
 					$trans = $lineLink;
 					i = j;
 					start = j + 1;
 				} else if (c == '|') {
 					 txt = txt.substr(0, i) + ' ' + txt.substr(i + 1);
 				} else if (c == '<') {
-					var $bold = document.createElement('b');
-					$trans.appendChild($bold);
-					htmlStack.push($trans);
-					$trans = $bold;
+					$trans = newElemenet('b', htmlStack, $trans);
 					start = i + 1;
 				}  else if (c == '≤' || c == '⊆') {
-					var $italic = document.createElement('i');
-					$trans.appendChild($italic);
-					htmlStack.push($trans);
-					$trans = $italic;
+					$trans = $trans = newElemenet('i', htmlStack, $trans);
 					start = i + 1;
 				}  else if (c == '{') {
-					var $scene_header = document.createElement('h2');
-					$trans.appendChild($scene_header);
-					htmlStack.push($trans);
-					$trans = $scene_header;
+					$trans = $trans = newElemenet('h2', htmlStack, $trans);
 					start = i + 1;
 				}  else if (c == '(') {
-					var $act_header = document.createElement('h1');
-					$trans.appendChild($act_header);
-					htmlStack.push($trans);
-					$trans = $act_header;
+					$trans = $trans = newElemenet('h1', htmlStack, $trans);
 					start = i + 1;
 				} else if (c == '>' || c == '≥' || c == '}' || c == ')' || c == '⊇') {
 					$trans = htmlStack.pop();
@@ -92,9 +76,12 @@ function render(ret) {
         var $wdText = document.createTextNode(txt);
         $wd.appendChild($wdText);
         wd.$div = $wd;
-        if(wd.start === undefined) {
+        if(wd.case === 'not-found-in-audio') {
             $wd.className = 'not_in_audio';
         };
+		if (wd.end != undefined) {
+			lineSwitchTime = wd.end;
+		};
 		$wd.setAttribute("start", wd.start);
 		$wd.setAttribute("end", wd.end);
         $wd.onclick = function() {state.click($(this))};
@@ -117,14 +104,36 @@ function displayFetchError() {
 };
 
 function setLinkedTime() {
-	lineLink = $(window.location.hash);
+	lineLink = $(window.location.hash.substring(0, window.location.hash.length - LINE.length));
 	if (lineLink[0] == undefined) return;
 
 	lineLink[0].scrollIntoView();
 
 	time = parseInt($(lineLink.find("span")[0]).attr('start'));
 	if (time) media.setTime(time);
+};
+
+function newElemenet(element, htmlStack,  $trans) {
+	var $el = document.createElement(element);
+	$trans.appendChild($el);
+	htmlStack.push($trans);
+	return $el;
+};
+
+function pushLinkToStack(curLine, lineSwitchTime, $trans, htmlStack) {
+	var $lineLink = createLink(curLine, lineSwitchTime);
+	$trans.appendChild($lineLink);
+	htmlStack.push($trans);
+	return $lineLink;
 }
+
+function createLink(curLine, lineSwitchTime) {
+	var $lineLink = document.createElement('a');
+	$lineLink.setAttribute("id", curLine);
+	$lineLink.setAttribute("href", "#" + curLine + LINE);
+	$lineLink.setAttribute("start", lineSwitchTime);
+	return $lineLink;
+};
 
 function getTranscript(url) {
 	console.log(url);

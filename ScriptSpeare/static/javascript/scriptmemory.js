@@ -28,3 +28,14 @@ function findLine(script, time) {
 	};
 	return {line : curLine.attr("id"), count : i};
 };
+
+function moveToLine(lineNum) {
+	line = $("#" + lineNum);
+	line[0].scrollIntoView();
+	media.setTime(line.attr("start"));
+};
+
+function skipLine(offset) {
+	line = parseInt(globalCurrentLine) + parseInt(offset);
+	moveToLine(line);
+};

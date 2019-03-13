@@ -12,14 +12,16 @@ $(document).ready(function(){
 function togglePauseUI(target, media) {
 	playIcon = "fas fa-pause-circle bar-button";
 	pauseIcon = "fas fa-play-circle bar-button";
-	if (media.getTime() == media.getDuration) {
-		media.setTime(0);
-		target.className = pauseIcon;
-	};
-	media.togglePause();
-	if (media.paused()) {
-		target.className = pauseIcon;
-	} else {
-		target.className = playIcon;
-	};
+	media.addTimeUpdate(function(event){
+		media = event.data;
+		if (media.getTime() == media.getDuration) {
+			media.setTime(0);
+			target.className = pauseIcon;
+		};
+		if (media.paused()) {
+			target.className = pauseIcon;
+		} else {
+			target.className = playIcon;
+		};
+    });
 };

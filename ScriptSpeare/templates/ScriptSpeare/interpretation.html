@@ -14,23 +14,52 @@ $(document).ready(function() {
 				<div class="col-6" id="content-left">
 					<div class="container-fluid">
 						<div class="row">
-							<div class="col-12">
-								<h1>
-               						{{play}}<br>
-               					</h1>
-								<select class="custom-select" onchange="location = this.value;" >
-									{% if all_interp %}
-							 				<ul>
-							 					<option value=""> {{interp.3}} : {{interp.2}}, {{ interp.1}} ({{interp.4}}/{{interp.5}})</option>
-							 					<option value ="" >----------------------</option>
-							 				{% for itps in all_interp %}
-							 					<option value="{% url 'show_interpretation' category play interp_id %}">{{itps.3}} : {{itps.2}}, {{ itps.1}} ({{itps.4}}/{{itps.5}})</option>
-							 				{% endfor %}
-							 				</ul>
-							 			{% else %}
-							 				<strong>No plays currently in category.</strong>
-										{% endif %}
-								</select>
+							<h1 style="margin-top:2vh; margin-bottom:0;"> {{play}}<br>
+               				</h1>
+							<div class="col-12"  >
+
+
+
+								<div class="coffeedropdown" >
+  								
+  								<button  class="col-12 coffeedropbtn " onClick="coffeemyFunctionDrop()">{{interp.3}} : {{interp.2}}, {{ interp.1}} ({{interp.6}}/{{interp.7}})</button>
+								<div id="coffeemyDropdown" class="coffeedropdown-content">
+								<input class="col-10"type="text" id="coffeemySearch" onkeyup="coffeemyFunctionSearch()" placeholder="Search.." title="Type in a category">
+
+
+										<div class=" row coffeerow">
+									<div class="coffeeleft col-2" >
+										<h5>Category</h5>
+										
+										<ul id="coffeemyMenu">
+											<li><a href="#" onmouseover="coffeefilterFunction(this.innerHTML)">ALL</a></li>
+											<li><a href="#" onmouseover="coffeefilterFunction(this.innerHTML)" >FILM</a></li>
+											<li><a href="#" onmouseover="coffeefilterFunction(this.innerHTML)" >STAGE</a></li>
+											<li><a href="#" onmouseover="coffeefilterFunction(this.innerHTML)" >AUDIO</a></li>
+										</ul>
+									</div>
+
+									<div class="coffeeright col-10" >
+										<h5>Adaptation list</h5>
+										<div class="coffeescroller col-12">
+											{% if all_interp %}
+											    <ul id="coffeemyAdaptations">
+											    {% for itps in all_interp %}
+											      <a href="{% url 'show_interpretation' category play itps.8 %}">{{itps.3}} : {{itps.2}}, {{ itps.1}} ({{itps.6}}/{{itps.7}})</a>
+											    {% endfor %}
+											    </ul>
+											  {% else %}
+											    <strong>No plays currently in category.</strong>
+											  {% endif %}
+										</div>
+
+									</div>
+								</div>
+  								</div>
+								</div>
+
+
+
 							</div>
 							<div class="col-12">
 								<video controls poster="" class="col-12" id="media" style="margin-top: 0;">

@@ -7,6 +7,23 @@ $(document).ready(function() {
 	getTranscript('https://s3.eu-west-2.amazonaws.com/scriptspeare-media-files/{{category}}/{{abbr}}/{{interp.0}}-{{interp.1}}-{{interp.2}}-{{interp.3}}-{{interp.4}}-{{interp.5}}.json');
 });
 </script>
+
+<style>
+.button{
+	border:none;
+	background-color:white;
+	padding: 2px 4px;
+	font-size: 14px;
+	cursor:pointer;
+	display:inline-block;
+	color:black;
+}
+
+.button:hover{
+	font-size:16px;
+	background-color:#C6C6C6;
+}
+</style>
 {% endblock %}
 
 {% block body_block %}
@@ -15,9 +32,7 @@ $(document).ready(function() {
 					<div class="container-fluid">
 						<div class="row">
 							<div class="col-12">
-								<h1>
-               						{{play}}<br>
-               					</h1>
+								<h1>{{play}}<br></h1>
 								<select class="custom-select" onchange="location = this.value;" >
 									{% if all_interp %}
 							 				<ul>
@@ -56,7 +71,21 @@ $(document).ready(function() {
 								<form class="form">
 									<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
 								</form>
+
+								<div class="row">
+									<div class="col-12"  style="text-align:center;" >
+										<button class="button" type="button" onclick="window.location.href='{% url 'index' %}'">Back to Homepage</button>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-12"  style="text-align:center;" >
+										<button class="button" type="button" onclick="window.location.href='{% url 'show_category' category %}'">Back to {{category}}</button>
+									</div>
+								</div>
+
 								<div class="container-fluid" id="more">
+
 								<form>
 									<div class="row">
 										<div class="col-12">

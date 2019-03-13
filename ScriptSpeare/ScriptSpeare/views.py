@@ -27,7 +27,7 @@ def show_category(request, category):
 		context_dict['category'] = category
 		context_dict['categories']= category_list
 		
-	except Category.DoesNotExist:
+	except category.DoesNotExist:
 		context_dict['category'] = None
 		context_dict['plays'] = None
 		
@@ -101,7 +101,7 @@ def show_play(request, category, play, interp_id=0):
 		context_dict['audio']=audio
 		context_dict['category']=category
 		
-	except Play.DoesNotExist:
+	except play.DoesNotExist:
 		context_dict['all_interp']=None
 		context_dict['abbr']=None
 		context_dict['intrep'] = None

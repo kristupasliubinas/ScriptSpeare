@@ -6,15 +6,16 @@ $(document).ready(function(){
 		};
 	};
 	media.addTimeUpdate(checkEnd, media);
+	media.addTimeUpdate(togglePauseUI, media);
 });
 
-
-function togglePauseUI(target, media) {
+function togglePauseUI(event) {
 	playIcon = "fas fa-pause-circle bar-button";
 	pauseIcon = "fas fa-play-circle bar-button";
-	media.addTimeUpdate(function(event){
-		media = event.data;
-		if (media.getTime() == media.getDuration) {
+	media = event.data;
+	targets = [$("#playbutton")[0],  $("#overlay-play")[0]];
+	targets.forEach(function(target) {
+		if (media.getTime() >= media.getDuration) {
 			media.setTime(0);
 			target.className = pauseIcon;
 		};
@@ -23,5 +24,6 @@ function togglePauseUI(target, media) {
 		} else {
 			target.className = playIcon;
 		};
-    });
+	});
+
 };

@@ -67,9 +67,11 @@ $(document).ready(function() {
 									/{{abbr}}/{{interp.0}}-{{interp.1}}-{{interp.2}}-{{interp.3}}-{{interp.4}}-{{interp.5}}.mp4">
 								</video>
 								<div class="overlay d-flex align-items-center justify-content-center">
-								<i class="fas fa-arrow-left " id="overlay_left" onCLick="location.href='{% url 'show_interpretation' category play prev %}' + getCurrentLineLink()"></i>
+								<i class="fas fa-arrow-circle-left" id="overlay_left" onCLick="location.href='{% url 'show_interpretation' category play prev %}'"></i>
 								<i id="overlay-play" id="overlay_middle" class="fas fa-play-circle bar-button "   onclick="togglePauseUI(this, media)"></i>
-								<i class="fas fa-arrow-right"  id="overlay_right" onCLick="location.href='{% url 'show_interpretation' category play next %}' + getCurrentLineLink()"></i>
+								<i class="fas fa-arrow-circle-right" id="overlay_right" onCLick="location.href='{% url 'show_interpretation' category play next %}'"></i>
+
+
 								</div>
 							</div>
 						</div>
@@ -88,18 +90,44 @@ $(document).ready(function() {
 								<div class="container-fluid" id="more">
 								<form>
 									<div class="row">
-										<div class="col-12">
-											<label><input type="radio" class ="side-buttn" onclick="setState('click')">Go to</label>
+										<div class="col-11">
+
+                                            <div class="radio fancy-blue">
+                                                <label>
+                                                    <input type="radio" name="optionsRadios" onclick="setState('click')" style="margin-right: 10px;">
+                                                        Go to
+                                                    <span></span>
+                                                </label>
+                                            </div>
+
+
 										</div>
 									</div>
 									<div class="row">
-										<div class="col-12 radio">
-											<label><input type="radio" class="side-buttn" onclick="">Notes</label>
+										<div class="col-11">
+
+
+                                            <div class="radio fancy-blue">
+                                                <label>
+                                                    <input type="radio" name="optionsRadios"  onclick="" style="margin-right: 10px;">
+                                                        Notes
+                                                    <span></span>
+                                                </label>
+                                            </div>
+
 										</div>
 									</div>
 									<div class="row">
-										<div class="col-12">
-											<label><input type="radio" class="side-buttn" onclick="setState('select')">Select</label>
+										<div class="col-11">
+
+                                            <div class="radio fancy-blue">
+                                                <label>
+                                                    <input type="radio" name="optionsRadios" onclick="setState('click')" style="margin-right: 10px;">
+                                                        Select
+                                                    <span></span>
+                                                </label>
+                                            </div>
+
 										</div>
 									</div>
 									</form>
@@ -125,7 +153,7 @@ $(document).ready(function() {
 								<a href="#" onclick="media.setPlaybackRate(2)">2.0</a>
 							</div>
 						</div>
-      					<i id="playbutton" class="fas fa-play-circle bar-button"  style="font-size: 3em;" onclick="togglePauseUI(this, media)"></i>
+      					<i id="playbutton" class="fas fa-play-circle bar-button"  style="font-size: 2em;" onclick="togglePauseUI(this, media)"></i>
       					<i class="fas fa-redo bar-button" onclick="media.toggleLoop()"></i>
       				</div>
 

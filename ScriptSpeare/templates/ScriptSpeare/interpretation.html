@@ -39,7 +39,7 @@ $(document).ready(function() {
 								</video>
 								<div class="overlay d-flex align-items-center justify-content-center">
 								<i class="fas fa-arrow-left " id="overlay_left" onCLick="location.href='{% url 'show_interpretation' category play prev %}' + getCurrentLineLink()"></i>
-								<i id="overlay-play" id="overlay_middle" class="fas fa-play-circle bar-button "   onclick="togglePauseUI(this, media)"></i>
+								<i id="overlay-play" id="overlay_middle" class="fas fa-play-circle bar-button "   onclick="media.togglePause()"></i>
 								<i class="fas fa-arrow-right"  id="overlay_right" onCLick="location.href='{% url 'show_interpretation' category play next %}' + getCurrentLineLink()"></i>
 								</div>
 							</div>
@@ -96,7 +96,7 @@ $(document).ready(function() {
 								<a href="#" onclick="media.setPlaybackRate(2)">2.0</a>
 							</div>
 						</div>
-      					<i id="playbutton" class="fas fa-play-circle bar-button"  style="font-size: 3em;" onclick="togglePauseUI(this, media)"></i>
+      					<i id="playbutton" class="fas fa-play-circle bar-button"  style="font-size: 3em;" onclick="media.togglePause()"></i>
       					<i class="fas fa-redo bar-button" onclick="media.toggleLoop()"></i>
       				</div>
 

@@ -99,7 +99,6 @@ function render(ret) {
 
 function displayFetchError() {
 	var $trans = $(".script")[0];
-	//var $trans_reference = $trans;
     $trans.appendChild(document.createElement('h2').appendChild(document.createTextNode('Failed to fetch the transcript')));
 };
 

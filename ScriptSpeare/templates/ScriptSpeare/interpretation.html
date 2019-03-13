@@ -149,8 +149,9 @@ $(document).ready(function() {
 {% block bar_block%}
 			<div  class=" row-centered navbar navbar-expand-lg fixed-bottom " style="height:4em; background-color: black;">
       				<div class="col-12 align-middle bar-icons col-centered">
+						<button class="dropbtn" onclick="skipLine(-3)">-3 lines</button>
+						<button class="dropbtn">Playback</button>
 						<div class="dropup">
-							<button class="dropbtn">Playback</button>
 							<div class="dropup-content">
 								<a href="#" onclick="media.setPlaybackRate(0.5)">0.5</a>
 								<a href="#" onclick="media.setPlaybackRate(0.75)">0.75</a>
@@ -162,6 +163,7 @@ $(document).ready(function() {
 
       					<i id="playbutton" class="fas fa-play-circle bar-button"  style="font-size: 3em;" onclick="media.togglePause()"></i>
       					<i class="fas fa-redo bar-button" onclick="media.toggleLoop()"></i>
+						<button class="dropbtn"  onclick="skipLine(3)">+3 lines</button>
       				</div>
 
     		</div>

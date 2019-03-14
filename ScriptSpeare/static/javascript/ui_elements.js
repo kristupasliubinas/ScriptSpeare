@@ -19,11 +19,10 @@ function togglePauseUI(event) {
 			media.setTime(0);
 			target.className = pauseIcon;
 		};
-		if (media.paused()) {
+		if (media.paused() && target.className != pauseIcon) {
 			target.className = pauseIcon;
-		} else {
+		} else if (target.className != playIcon){
 			target.className = playIcon;
 		};
 	});
-
 };

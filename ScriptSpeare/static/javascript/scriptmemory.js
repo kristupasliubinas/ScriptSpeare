@@ -1,3 +1,7 @@
+/*Functionality for updating the current line.
+
+The class ScriptMemory updates the current line.
+It contains the functions for moving based on the lines.*/
 function ScriptMemory(media) {
 	this.line = 0;
 	media.addTimeUpdate(function(event){

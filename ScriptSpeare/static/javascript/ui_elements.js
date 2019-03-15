@@ -1,4 +1,4 @@
-//Document for functions which change the appearance of UI element
+/*Document for functions which control UI elements, such as play and pause buttons.*/
 $(document).ready(function(){
 	checkEnd = function(event) {
 		if (event.data.getTime() >= event.data.getDuration()) {

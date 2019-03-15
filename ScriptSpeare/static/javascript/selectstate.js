@@ -34,7 +34,7 @@ function colourLoop(media) {
 	for (i = 0; i < spans.length; i++) {
 		span = $(spans[i]);
 		if (media.loopStart <= parseTime(span.attr("start")) && media.loopEnd >= parseTime(span.attr("end"))) {
-			span.css( "background-color", "#aaaaaa" );
+			span.css( "background-color", "#dddddd" );
 		};
 	};
 	console.log("ok");

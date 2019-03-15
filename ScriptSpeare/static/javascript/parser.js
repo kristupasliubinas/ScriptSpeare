@@ -1,4 +1,10 @@
-﻿//Copy Pasted from the Gentle webpage
+﻿/*The module responsible for parsing the server side json
+
+The function render(ret) is the main parsing function, which takes a JSON and turns it into html on the page.
+Rest of the code is helper functions and functionality for setting the script location after it has been loaded.
+*/
+
+//Render is copy Pasted from the Gentle webpage and modified
 //THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 LINE = "=line";
 

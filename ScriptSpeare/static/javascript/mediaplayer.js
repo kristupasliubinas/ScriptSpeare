@@ -1,3 +1,8 @@
+/*An interface class for the webpage's media player.
+
+This class is made to give an interface for the media player that does not depend on its implementation.
+Even if the actual implementation of the media were to change, the function names here should not be changed.*/
+
 function Media(jQueryMedia) {
 	this.htmlMedia = jQueryMedia[0];
 	this.jQueryMedia = jQueryMedia;

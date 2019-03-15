@@ -1,4 +1,7 @@
-// Initialize the important structures
+/*The class for global setting up.
+
+Variables and functions on which the other modules rely on should be set up here.
+This includes states and the media player's javascript wrapper.*/
 $(document).ready(function(){
 	media = new Media($("#media"));
 	clickState = new ClickState(media);

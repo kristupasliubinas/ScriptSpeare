@@ -1,3 +1,5 @@
+/*The loop state.*/
+
 function selectState(media) {
 	State.call(media);
 	this.isStartClick = true;

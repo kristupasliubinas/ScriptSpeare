@@ -45,7 +45,7 @@ $(document).ready(function() {
 											{% if all_interp %}
 											    <ul id="coffeemyAdaptations">
 											    {% for itps in all_interp %}
-											      <a href="{% url 'show_interpretation' category play itps.8 %}">{{itps.3}} : {{itps.2}}, {{ itps.1}} ({{itps.6}}/{{itps.7}})</a>
+											      <a href="{% url 'show_play' category play itps.8 %}">{{itps.3}} : {{itps.2}}, {{ itps.1}} ({{itps.6}}/{{itps.7}})</a>
 											    {% endfor %}
 											    </ul>
 											  {% else %}
@@ -67,9 +67,9 @@ $(document).ready(function() {
 									/{{abbr}}/{{interp.0}}-{{interp.1}}-{{interp.2}}-{{interp.3}}-{{interp.4}}-{{interp.5}}.mp4">
 								</video>
 								<div class="overlay d-flex align-items-center justify-content-center">
-								<i class="fas fa-arrow-left " id="overlay_left" onCLick="location.href='{% url 'show_interpretation' category play prev %}' + getCurrentLineLink()"></i>
+								<i class="fas fa-arrow-left " id="overlay_left" onCLick="location.href='{% url 'show_play' category play prev %}' + getCurrentLineLink()"></i>
 								<i id="overlay-play" id="overlay_middle" class="fas fa-play-circle bar-button "   onclick="media.togglePause()"></i>
-								<i class="fas fa-arrow-right"  id="overlay_right" onCLick="location.href='{% url 'show_interpretation' category play next %}' + getCurrentLineLink()"></i>
+								<i class="fas fa-arrow-right"  id="overlay_right" onCLick="location.href='{% url 'show_play' category play next %}' + getCurrentLineLink()"></i>
 								</div>
 							</div>
 						</div>

@@ -120,7 +120,7 @@ $(document).ready(function() {
 
                                             <div class="radio fancy-blue">
                                                 <label>
-                                                    <input type="radio" name="optionsRadios" onclick="setState('click')" style="margin-right: 10px;">
+                                                    <input type="radio" name="optionsRadios" onclick="setState('select')" style="margin-right: 10px;">
                                                         Select
                                                     <span></span>
                                                 </label>
@@ -156,6 +156,7 @@ $(document).ready(function() {
       					<i id="playbutton" class="fas fa-play-circle bar-button"  style="font-size: 3em;" onclick="media.togglePause()"></i>
       					<button class="dropbtn"  onclick="skipLine(3)">+3 lines</button>
 						<i class="fas fa-redo bar-button" onclick="media.toggleLoop()"></i>
+						<button class="dropbtn"  onclick="$('#' + globalCurrentLine)[0].scrollIntoView();">Current Line</button>
       				</div>
 
     		</div>

@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 18px;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.script-side {
+    padding: 10px;
+}
+
+.title-section {
+    height: 60px;
+    position: relative;
+}
+
+.title {
+    font-size: 36px;
+    padding-right: 10px;
+}
+
+.line-count {
+    font-size: 16px;
+    color: rgb(100, 100, 100);
+}
+
+#stage-dir {
+    padding: 10px 0;
+    color: rgb(100, 100, 100);
+    font-style: italic;
+}
+
+#char {
+    padding: 10px 0 1px 0;
+    font-weight: bolder;
+    font-size: 16px;
+}
+
+.script p {
+    padding: 1px 0 5px 25px;
+}

@@ -1,6 +1,10 @@
 {% extends 'ScriptSpeare/base.html' %}
 {% load staticfiles %}
 
+{% block head_block %}
+
+{% endblock %}
+
 {% block body_block %}
 
 {% if categories %}
@@ -11,7 +15,7 @@
 					<a  class="col d-flex justify-content-center" href="{% url 'show_category' category %}">
 						<img id="categories" src="/static/images/{{category}}.jpg"  >
 					</a>
-				
+
 				{%endfor%}
 			</div>
 			<div class="row d-flex align-items-center justify-content-center" >
@@ -22,22 +26,36 @@
 				{%endfor%}
 			</div>
 			<div class="row d-flex align-items-center justify-content-center"><h1>{{category.name}}</h1></div>
-			<div class="row d-flex align-items-center justify-content-center">
+
 				{% if category %}
+					<br>
  					{% if plays %}
- 					<ul>
+
+						<div class="row d-flex align-items-center justify-content-center">
  						{% for play in plays %}
- 						<li><a href="{% url 'show_play' category play   %}">{{ play }}</a></li>
- 						{% endfor %}
- 					</ul>
- 					{% else %}
+						<a  class="col d-flex justify-content-center" href="{% url 'show_play' category play %}">
+							<img id="play" src="/static/images/play_pics/{{play}}.png"  alt="{{ play }}" width="120" height="120">
+						</a>
+						{% endfor %}
+						</div>
+
+
+						<div class="row d-flex align-items-center justify-content-center">
+						{% for play in plays %}
+							<a id="plays" class="col d-flex justify-content-center"   href="{% url 'show_play' category play  %}">
+								{{play}}
+							</a>
+
+						{% endfor %}
+						</div>
+					{% else %}
  					<strong>No plays currently in category.</strong>
 					{% endif %}
  					{% else %}
- 					The specified category does not exist!
+ 					<!-- The specified category does not exist! -->
  					{% endif %}
 			</div>
-			
+
 		</div>
 	{% else %}
 		<strong>No categories present!</strong>

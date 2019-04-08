@@ -5,3 +5,10 @@ build:
   artifacts:
     paths:
       - "*.pdf"
+
+build:
+  script:
+    - latexmk -pdf -cd dissertation/dissertation.tex
+  artifacts:
+    paths:
+      - "*.pdf"
